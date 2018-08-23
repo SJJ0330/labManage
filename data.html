@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>实验室管理</title>
+    <link rel="shortcut icon" href="img/short.ico" type="image/x-icon">
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/icon.css">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/data.css">
+    
+
+    <script src="js/echarts.js"></script>
+    <script src="js/jquery-3.2.1.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/less.min.js"></script>
+    <script src="js/common.js"></script>  
+
+
+</head>
+<body>
+
+    <!-- top -->
+    <div class="l-header hidden-xs">
+        <div class="logo pull-left">
+            <img src="img/color-logo-2.png" alt="">
+        </div>
+        <div class="l-user pull-right">
+            <div class="pull-left">实训基地管理信息系统</div>
+            <div class="pull-right icon">
+                <i class="iconfont">&#xe6b8;</i>
+                <span>User</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- mobile top -->
+    <div class="container-fluid m-l-nav visible-xs">
+        <div class="row pabo">
+            <div class="logo-wrapper col-sm-12">
+                <div class="logo pull-left">
+                    <img src="img/color-logo-2.png" alt="">
+                    <span>实训基地管理信息系统</span>
+                </div>
+                <div class="m-user pull-right">
+                    <i class="nav-btn iconfont">&#xe80e;</i>
+                </div>
+            </div>
+        </div>
+        <div class="m-nav-list">
+            <div class="m-nav-ul">
+                <a href="#" class="current">
+                    <i class="iconfont">&#xe6b3;</i>
+                    <span>数据大屏</span>
+                </a>
+                <a href="" data-toggle="modal" data-target="#goon">
+                    <i class="iconfont">&#xe69e;</i>
+                    <span>教学管理</span>
+                </a>
+                <a href="labManage.html">
+                    <i class="iconfont">&#xe6b4;</i>
+                    <span>实验室管理</span>
+                </a>
+                <a href="" data-toggle="modal" data-target="#goon">
+                    <i class="iconfont">&#xe6cb;</i>
+                    <span>物料管理</span>
+                </a>
+                <a href="news.html">
+                    <i class="iconfont">&#xe6fb;</i>
+                    <span>新闻、公告</span>
+                </a>
+                <a href="user.html">
+                    <i class="iconfont">&#xe6b8;</i>
+                    <span>用户管理</span>
+                </a>
+            </div>
+        </div>
+    </div>
+    <!-- 半透明层 -->
+    <div class="m-nav-black"></div>
+
+
+    <!-- 左侧菜单aside -->
+    <div class="l-nav pull-left hidden-xs">
+        <div class="l-nav-left"></div>
+        <div class="menu">
+            <div class="l-nav-ul">
+                <a href="#" class="current">
+                    <i class="iconfont">&#xe6b3;</i>
+                    <span class="text">数据大屏</span>
+                </a>
+                <a href="" data-toggle="modal" data-target="#goon">
+                    <i class="iconfont">&#xe69e;</i>
+                    <span class="text">教学管理</span>
+                </a>
+                <a href="labManage.html">
+                    <i class="iconfont">&#xe6b4;</i>
+                    <span class="text">实验室管理</span>
+                </a>
+                <a href="" data-toggle="modal" data-target="#goon">
+                    <i class="iconfont">&#xe6cb;</i>
+                    <span class="text">物料管理</span>
+                </a>
+                <a href="news.html">
+                    <i class="iconfont">&#xe6fb;</i>
+                    <span class="text">新闻、公告</span>
+                </a>
+                <a href="user.html">
+                    <i class="iconfont">&#xe6b8;</i>
+                    <span class="text">用户管理</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- 右侧 数据 -->
+
+    <!-- 数据大屏 -->
+    <div class="data deleteClass pull-right">
+        <!-- echarts图表 -->
+        <div class="chart-wrapper">
+            <div id="bar_1"></div>
+            <div id="bar_2"></div>
+        </div>
+
+        
+
+
+        <!-- 实验室使用状态 -->
+        <div class="condition">
+            <!-- 使用中 -->
+            <div class="used">
+                <div class="square"></div>
+                <span>使用中</span>
+            </div>
+            <!-- 当前实验室使用状态 -->
+            <div class="condition-title">当前实验室使用状态</div>
+            <div class="hideBar">
+                <ul class="scroll">
+                    <li class="selected">
+                        <span class="num">01</span>
+                        <span class="room">药剂实验室（一）</span>
+                        <span class="use">使用中</span>
+                    </li>
+                    <li>
+                        <span class="num">02</span>
+                        <span class="room">药剂实验室（二）</span>
+                        <span class="use">空闲</span>
+                    </li>
+                    <li>
+                        <span class="num">03</span>
+                        <span class="room">微生物检验实验室</span>
+                        <span class="use">空闲</span>
+                    </li>
+                    <li>
+                        <span class="num">04</span>
+                        <span class="room">细菌室</span>
+                        <span class="use">空闲</span>
+                    </li>
+                    <li class="selected">
+                        <span class="num">05</span>
+                        <span class="room">检验实验室（一）</span>
+                        <span class="use">使用中</span>
+                    </li>
+                    <li>
+                        <span class="num">06</span>
+                        <span class="room">检验实验室（二）</span>
+                        <span class="use">空闲</span>
+                    </li>
+                    <li class="selected">
+                        <span class="num">07</span>
+                        <span class="room">检验仪器实验室</span>
+                        <span class="use">使用中</span>
+                    </li>
+                    <li>
+                        <span class="num">08</span>
+                        <span class="room">显微镜室</span>
+                        <span class="use">空闲</span>
+                    </li>
+                    <li>
+                        <span class="num">09</span>
+                        <span class="room">光化学分析室（一）</span>
+                        <span class="use">空闲</span>
+                    </li>
+                    <li>
+                        <span class="num">10</span>
+                        <span class="room">光化学分析室（二）</span>
+                        <span class="use">空闲</span>
+                    </li>
+                    <li>
+                        <span class="num">11</span>
+                        <span class="room">光化学分析室（三）</span>
+                        <span class="use">空闲</span>
+                    </li>
+                    <li>
+                        <span class="num">12</span>
+                        <span class="room">电子天平实验室</span>
+                        <span class="use">空闲</span>
+                    </li>
+                    <li>
+                        <span class="num">13</span>
+                        <span class="room">分析检验实验室</span>
+                        <span class="use">空闲</span>
+                    </li>
+                    <li>
+                        <span class="num">14</span>
+                        <span class="room">分析天平实验室</span>
+                        <span class="use">空闲</span>
+                    </li>
+                    <li>
+                        <span class="num">15</span>
+                        <span class="room">电化学分析实验室</span>
+                        <span class="use">空闲</span>
+                    </li>
+                    <li>
+                        <span class="num">16</span>
+                        <span class="room">中药标本室</span>
+                        <span class="use">空闲</span>
+                    </li>
+                    <li>
+                        <span class="num">17</span>
+                        <span class="room">药物化学实验室</span>
+                        <span class="use">空闲</span>
+                    </li>
+                    <li>
+                        <span class="num">18</span>
+                        <span class="room">模拟药房</span>
+                        <span class="use">空闲</span>
+                    </li>
+            
+            
+                    <li class="selected">
+                        <span class="num">07</span>
+                        <span class="room">检验仪器实验室</span>
+                        <span class="use">空闲</span>
+                    </li>
+                    <li>
+                        <span class="num">08</span>
+                        <span class="room">显微镜室</span>
+                        <span class="use">空闲</span>
+                    </li>
+                    <li>
+                        <span class="num">09</span>
+                        <span class="room">光化学分析室（一）</span>
+                        <span class="use">空闲</span>
+                    </li>
+                    <li>
+                        <span class="num">10</span>
+                        <span class="room">光化学分析室（二）</span>
+                        <span class="use">空闲</span>
+                    </li>
+                    <li>
+                        <span class="num">11</span>
+                        <span class="room">光化学分析室（三）</span>
+                        <span class="use">空闲</span>
+                    </li>
+                    <li>
+                        <span class="num">12</span>
+                        <span class="room">电子天平实验室</span>
+                        <span class="use">空闲</span>
+                    </li>
+                    <li>
+                        <span class="num">13</span>
+                        <span class="room">分析检验实验室</span>
+                        <span class="use">空闲</span>
+                    </li>
+                    <li>
+                        <span class="num">14</span>
+                        <span class="room">分析天平实验室</span>
+                        <span class="use">空闲</span>
+                    </li>
+                    <li>
+                        <span class="num">15</span>
+                        <span class="room">电化学分析实验室</span>
+                        <span class="use">空闲</span>
+                    </li>
+                    <li>
+                        <span class="num">16</span>
+                        <span class="room">中药标本室</span>
+                        <span class="use">空闲</span>
+                    </li>
+                    <li>
+                        <span class="num">17</span>
+                        <span class="room">药物化学实验室</span>
+                        <span class="use">空闲</span>
+                    </li>
+                    <li>
+                        <span class="num">18</span>
+                        <span class="room">模拟药房</span>
+                        <span class="use">空闲</span>
+                    </li>
+                    <li class="selected">
+                        <span class="num">07</span>
+                        <span class="room">检验仪器实验室</span>
+                        <span class="use">空闲</span>
+                    </li>
+                    <li>
+                        <span class="num">08</span>
+                        <span class="room">显微镜室</span>
+                        <span class="use">空闲</span>
+                    </li>
+                    <li>
+                        <span class="num">09</span>
+                        <span class="room">光化学分析室（一）</span>
+                        <span class="use">空闲</span>
+                    </li>
+                    <li>
+                        <span class="num">10</span>
+                        <span class="room">光化学分析室（二）</span>
+                        <span class="use">空闲</span>
+                    </li>
+                    <li>
+                        <span class="num">11</span>
+                        <span class="room">光化学分析室（三）</span>
+                        <span class="use">空闲</span>
+                    </li>
+                    <li>
+                        <span class="num">12</span>
+                        <span class="room">电子天平实验室</span>
+                        <span class="use">空闲</span>
+                    </li>
+                    <li>
+                        <span class="num">13</span>
+                        <span class="room">分析检验实验室</span>
+                        <span class="use">空闲</span>
+                    </li>
+                    <li>
+                        <span class="num">14</span>
+                        <span class="room">分析天平实验室</span>
+                        <span class="use">空闲</span>
+                    </li>
+                    <li>
+                        <span class="num">15</span>
+                        <span class="room">电化学分析实验室</span>
+                        <span class="use">空闲</span>
+                    </li>
+                    <li>
+                        <span class="num">16</span>
+                        <span class="room">中药标本室</span>
+                        <span class="use">空闲</span>
+                    </li>
+                    <li>
+                        <span class="num">17</span>
+                        <span class="room">药物化学实验室</span>
+                        <span class="use">空闲</span>
+                    </li>
+                    <li>
+                        <span class="num">18</span>
+                        <span class="room">模拟药房</span>
+                        <span class="use">空闲</span>
+                    </li>
+            
+                </ul>
+            </div>
+           
+        </div>
+    </div>
+
+    <script>
+        var bar_1 = echarts.init(document.getElementById('bar_1'));
+
+        var data_xAxis = ['18/7', '18/8', '18/9', '18/10', '18/11', '18/12', '19/1', '19/2', '19/3', '19/4', '19/5', '19/6'];
+
+        option = {
+                baseOption: {
+                    title: {
+                        text: '每月实验室预约次数',
+                        textStyle: {
+                            color: '#759ae0',
+                            fontSize: 12,
+                            align: 'left',
+                        },
+                        // top: '5%',
+                        // left: '0%',
+                        // x:left,
+
+                    },
+                    // 提示框
+                    tooltip: {
+                        show: true,
+                        // 处罚类型: 'axis'坐标轴触发，主要在柱状图，折线图等会使用类目轴的图表中使用。
+                        // trigger: 'axis',
+                        // 提示框触发的条件: 'mousemove'鼠标移动时触发
+                        triggerOn: 'mousemove',
+                        
+                    },
+                    xAxis: {
+                        //坐标轴类型,'category' 类目轴，适用于离散的类目数据，为该类型时必须通过 data 设置类目数据。
+                        type: 'category',
+                        // data:  ['18/7','18/8','18/9','18/10','18/11','18/12','19/1','19/2','19/3','19/4','19/5','19/6'],
+                        data: data_xAxis,
+                        axisLabel: {
+                            textStyle: {
+                                color: '#6a6a6a',
+                                fontSize: 10,
+                                // fontStyle: 'italic'
+
+                            },
+                            //坐标轴刻度 标签 的显示间隔，在类目轴中有效。默认会采用标签不重叠的策略间隔显示标签。可以设置成 0 强制显示所有标签。
+                            interval: 0,
+                        },
+                        axisTick: {
+                            // x轴刻度线不显示
+                            show: false,
+                            //坐标轴 刻度 的显示间隔，在类目轴中有效。
+                            // interval: 0,
+                        },
+                    },
+                    yAxis: {
+                        // y轴不显示
+                        show: false,
+                    },
+
+                    // dataZoom 组件 用于区域缩放，
+                    dataZoom: [
+                        {
+                            // 数据窗口范围的起始数值
+                            startValue: '18/11',
+                        }, 
+                        {
+                            //是否停止组件的功能。鼠标滚动和移动端双指操作不能缩放
+                            disabled:true,
+                            type: 'inside'
+                        },
+                      
+                    ],
+
+                    series: [
+                        {
+                            name: '预约次数',
+                            type: 'bar',
+
+                            data: [50, 30, 60, 55, 48, 40, 50, 46, 20, 42, 49, 47],
+
+                            //图形上的文本标签，可用于说明图形的一些数据信息，比如值，名称等
+                            label: {
+                                normal: {
+                                    show: true,
+                                    position: 'top',
+                                }
+                            },
+
+                            itemStyle: {
+                                normal: {
+                                    // 每个柱子的颜色
+                                    color: function (params) {
+                                        //首先定义一个数组 
+                                        var colorList = ['#3971da', '#374649', '#3971da', '#374649', '#3971da', '#374649', '#3971da', '#374649', '#3971da', '#374649', '#3971da', '#374649'];
+                                        return colorList[params.dataIndex]
+                                    },
+                                }
+                            },
+
+
+                            //柱子的宽度
+                            barWidth: '60%',
+
+                            //数据堆叠，同个类目轴上系列配置相同的stack值可以堆叠放置。
+                            stack: '总量',
+
+                            //不同系列的柱间距离，可设固定值（如 20）或者百分比（如 '30%'，表示柱子宽度的 30%）。
+                            //如果想要两个系列的柱子重叠，可以设置 barGap 为 '-100%'。这在用柱子做背景的时候有用。
+                            barGap: '-100%',
+
+                            //组件的所有图形的 z 值。控制图形的前后顺序。z 值小的图形会被 z 值大的图形覆盖。
+                            z: 2,
+
+                        },
+                        {
+                            tooltip: {
+                                show: false,
+                            },
+                            // name: '总量',
+                            type: 'bar',
+                            itemStyle: {
+                                normal: {
+                                    color: '#f3f3f3',
+                                }
+                            },
+                            barWidth: '60%',
+                            z: 1,
+                            data: [80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80]
+                        }
+                    ],
+                },
+
+                // 自适应
+                media: [
+                    {
+                        query: {
+                            maxWidth: 340,
+                        },
+                        option: {
+                            title: {
+                                // left: 'center',
+                            },
+                            xAxis: {
+                                axisLabel: {
+                                    rotate: 45,
+                                }
+                            }
+                        }
+                    },
+                ]
+            };
+        bar_1.setOption(option);
+
+
+        var bar_2 = echarts.init(document.getElementById('bar_2'));
+
+        var data_yAxis = ['测试器材','测试器材','测试器材','测试器材','测试器材','测试器材','测试器材','测试器材','测试器材','测试器材','测试器材','测试器材'];
+        option = {
+                baseOption: {
+                    title: {
+                        text: '实验器材预约次数',
+                        textStyle: {
+                            color: '#759ae0',
+                            fontSize: 12,
+                        },
+                        // top: '5%',
+                        // left: '2%',
+
+                    },
+                    tooltip: {
+                        triggerOn: 'mousemove',
+                    },
+                    xAxis: {
+                        show: false,
+
+                    },
+                    yAxis: {
+                        type: 'category',
+                        data: data_yAxis,
+                        axisLabel: {
+                            textStyle: {
+                                color: '#6a6a6a',
+                                fontSize: 10,
+                            },
+                            interval: 0,
+                            rotate: 45,
+                        },
+                        axisTick: {
+                            show: false,
+                        },
+
+                    },
+                    grid: {
+                        left: '15%',
+                    },
+
+                    // dataZoom 组件 用于区域缩放，
+                    dataZoom: [
+                        {
+                            orient: 'vertical',
+                            // 数据窗口范围的起始百分比
+                            startValue: 4,
+                            endValue: 11,
+                        }, 
+                        {
+                            //是否停止组件的功能。鼠标滚动和移动端双指操作不能缩放
+                            disabled:true,
+                            type: 'inside',
+                            // 如何触发缩放。
+                            // zoomOnMouseWheel: false,
+                            // 如何触发数据窗口平移。
+                            // moveOnMouseMove: false,
+                            // 是否阻止 mousemove 事件的默认行为。
+                            // preventDefaultMouseMove: false,
+                        }
+                    ],
+
+
+                    series: [
+                        {
+                            name: '预约次数',
+                            type: 'bar',
+                            data: [50, 30, 60, 55, 48, 40, 50, 46, 20, 42, 49, 47],
+                            roam:false,
+                            label: {
+                                normal: {
+                                    show: true,
+                                    position: 'right',
+                                }
+                            },
+                            itemStyle: {
+                                normal: {
+                                    color: function (params) {
+                                        var colorList = ['#3971da', '#374649', '#3971da', '#374649', '#3971da', '#374649', '#3971da', '#374649', '#3971da', '#374649', '#3971da', '#374649'];
+                                        return colorList[params.dataIndex]
+                                    },
+                                }
+                            },
+                            barWidth: '80%',
+                            //同一系列的柱间距离，
+                            // barCategoryGap: '10%',
+                            stack: '总量',
+                            z: 2,
+                        },
+                        {
+                            tooltip: {
+                                show: false,
+                            },
+                            // name: '总量',
+                            type: 'bar',
+                            itemStyle: {
+                                normal: {
+                                    color: '#f3f3f3',
+                                }
+                            },
+                            barWidth: '80%',
+                            //不同系列的柱间距离
+                            barGap: '-100%',
+                            z: 1,
+                            data: [80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80]
+                        },
+                    ],
+                },
+              
+                media: [
+                    {
+                        query: {
+                            maxWidth: 340,
+                        },
+                        option: {
+                            title: {
+                                // left: 'center',
+                            },
+                            // dataZoom 组件 用于区域缩放，
+                            dataZoom: [
+                                {
+                                    orient: 'vertical',
+                                    // 数据窗口范围的起始百分比
+                                    startValue: 4,
+                                    endValue: 11,
+                                },
+                                {
+                                    type: 'inside',
+                                    // 如何触发缩放。
+                                    zoomOnMouseWheel: false,
+                                    // 如何触发数据窗口平移。
+                                    moveOnMouseMove: false,
+
+                                }
+                            ],
+                        }
+                    }
+                ]
+            }
+        bar_2.setOption(option);
+
+
+
+
+        // echatrs 随着屏幕的大小自动调整尺寸
+        $(window).resize(function () {
+            bar_1.resize();
+            bar_2.resize();
+            var bar_1 = echarts.init(document.getElementById('bar_1'));
+
+        var data_xAxis = ['18/7', '18/8', '18/9', '18/10', '18/11', '18/12', '19/1', '19/2', '19/3', '19/4', '19/5', '19/6'];
+
+        option = {
+                baseOption: {
+                    title: {
+                        text: '每月实验室预约次数',
+                        textStyle: {
+                            color: '#759ae0',
+                            fontSize: 12,
+                        },
+                        // top: '5%',
+                        // left: '1%',
+                    },
+                    // 提示框
+                    tooltip: {
+                        show: true,
+                        // 处罚类型: 'axis'坐标轴触发，主要在柱状图，折线图等会使用类目轴的图表中使用。
+                        // trigger: 'axis',
+                        // 提示框触发的条件: 'mousemove'鼠标移动时触发
+                        triggerOn: 'mousemove',
+                        
+                    },
+                    xAxis: {
+                        //坐标轴类型,'category' 类目轴，适用于离散的类目数据，为该类型时必须通过 data 设置类目数据。
+                        type: 'category',
+                        // data:  ['18/7','18/8','18/9','18/10','18/11','18/12','19/1','19/2','19/3','19/4','19/5','19/6'],
+                        data: data_xAxis,
+                        axisLabel: {
+                            textStyle: {
+                                color: '#6a6a6a',
+                                fontSize: 10,
+                                // fontStyle: 'italic'
+
+                            },
+                            //坐标轴刻度 标签 的显示间隔，在类目轴中有效。默认会采用标签不重叠的策略间隔显示标签。可以设置成 0 强制显示所有标签。
+                            interval: 0,
+                        },
+                        axisTick: {
+                            // x轴刻度线不显示
+                            show: false,
+                            //坐标轴 刻度 的显示间隔，在类目轴中有效。
+                            // interval: 0,
+                        },
+                    },
+                    yAxis: {
+                        // y轴不显示
+                        show: false,
+                    },
+
+                    // dataZoom 组件 用于区域缩放，
+                    dataZoom: [
+                        {
+                            // 数据窗口范围的起始数值
+                            startValue: '18/11'
+                        }, 
+                        {
+                            //是否停止组件的功能。鼠标滚动和移动端双指操作不能缩放
+                            disabled:true,
+                            type: 'inside'
+                        }
+                    ],
+
+                    series: [
+                        {
+                            name: '预约次数',
+                            type: 'bar',
+
+                            data: [50, 30, 60, 55, 48, 40, 50, 46, 20, 42, 49, 47],
+
+                            //图形上的文本标签，可用于说明图形的一些数据信息，比如值，名称等
+                            label: {
+                                normal: {
+                                    show: true,
+                                    position: 'top',
+                                }
+                            },
+
+                            itemStyle: {
+                                normal: {
+                                    // 每个柱子的颜色
+                                    color: function (params) {
+                                        //首先定义一个数组 
+                                        var colorList = ['#3971da', '#374649', '#3971da', '#374649', '#3971da', '#374649', '#3971da', '#374649', '#3971da', '#374649', '#3971da', '#374649'];
+                                        return colorList[params.dataIndex]
+                                    },
+                                }
+                            },
+
+
+                            //柱子的宽度
+                            barWidth: '60%',
+
+                            //数据堆叠，同个类目轴上系列配置相同的stack值可以堆叠放置。
+                            stack: '总量',
+
+                            //不同系列的柱间距离，可设固定值（如 20）或者百分比（如 '30%'，表示柱子宽度的 30%）。
+                            //如果想要两个系列的柱子重叠，可以设置 barGap 为 '-100%'。这在用柱子做背景的时候有用。
+                            barGap: '-100%',
+
+                            //组件的所有图形的 z 值。控制图形的前后顺序。z 值小的图形会被 z 值大的图形覆盖。
+                            z: 2,
+
+                        },
+                        {
+                            tooltip: {
+                                show: false,
+                            },
+                            // name: '总量',
+                            type: 'bar',
+                            itemStyle: {
+                                normal: {
+                                    color: '#f3f3f3',
+                                }
+                            },
+                            barWidth: '60%',
+                            z: 1,
+                            data: [80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80]
+                        }
+                    ],
+                },
+
+                // 自适应
+                media: [
+                    {
+                        query: {
+                            maxWidth: 340,
+                        },
+                        option: {
+                            title: {
+                                // left: 'center',
+                            },
+                            xAxis: {
+                                axisLabel: {
+                                    rotate: 45,
+                                }
+                            }
+                        }
+                    },
+                ]
+            };
+        bar_1.setOption(option);
+
+
+        var bar_2 = echarts.init(document.getElementById('bar_2'));
+
+        var data_yAxis = ['测试器材','测试器材','测试器材','测试器材','测试器材','测试器材','测试器材','测试器材','测试器材','测试器材','测试器材','测试器材'];
+        option = {
+                baseOption: {
+                    title: {
+                        text: '实验器材预约次数',
+                        textStyle: {
+                            color: '#759ae0',
+                            fontSize: 12,
+                        },
+                        // top: '5%',
+                        // left: '2%',
+
+                    },
+                    tooltip: {
+                        triggerOn: 'mousemove',
+                    },
+                    xAxis: {
+                        show: false,
+
+                    },
+                    yAxis: {
+                        type: 'category',
+                        data: data_yAxis,
+                        axisLabel: {
+                            textStyle: {
+                                color: '#6a6a6a',
+                                fontSize: 10,
+                            },
+                            interval: 0,
+                            rotate: 45,
+                        },
+                        axisTick: {
+                            show: false,
+                        },
+
+                    },
+                    grid: {
+                        left: '15%',
+                    },
+
+                    // dataZoom 组件 用于区域缩放，
+                    dataZoom: [
+                        {
+                            orient: 'vertical',
+                            // 数据窗口范围的起始百分比
+                            startValue: 4,
+                            endValue: 11,
+                        }, 
+                        {
+                            //是否停止组件的功能。鼠标滚动和移动端双指操作不能缩放
+                            disabled:true,
+                            type: 'inside'
+                        }
+                    ],
+
+
+                    series: [
+                        {
+                            name: '预约次数',
+                            type: 'bar',
+                            data: [50, 30, 60, 55, 48, 40, 50, 46, 20, 42, 49, 47],
+                            roam:false,
+                            label: {
+                                normal: {
+                                    show: true,
+                                    position: 'right',
+                                }
+                            },
+                            itemStyle: {
+                                normal: {
+                                    color: function (params) {
+                                        var colorList = ['#3971da', '#374649', '#3971da', '#374649', '#3971da', '#374649', '#3971da', '#374649', '#3971da', '#374649', '#3971da', '#374649'];
+                                        return colorList[params.dataIndex]
+                                    },
+                                }
+                            },
+                            barWidth: '80%',
+                            //同一系列的柱间距离，
+                            // barCategoryGap: '10%',
+                            stack: '总量',
+                            z: 2,
+                        },
+                        {
+                            tooltip: {
+                                show: false,
+                            },
+                            // name: '总量',
+                            type: 'bar',
+                            itemStyle: {
+                                normal: {
+                                    color: '#f3f3f3',
+                                }
+                            },
+                            barWidth: '80%',
+                            //不同系列的柱间距离
+                            barGap: '-100%',
+                            z: 1,
+                            data: [80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 80]
+                        },
+                    ],
+                },
+                
+                media: [
+                    {
+                        query: {
+                            maxWidth: 340,
+                        },
+                        option: {
+                            title: {
+                                // left: 'center',
+                            },
+                        }
+                    }
+                ]
+            }
+        bar_2.setOption(option);
+        });
+
+    </script>
+
+
+</body>
+<div class="modal fade" id="goon" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+              <p>该页面尚未开放！</p>
+              <img src="img/true.png" alt="">
+            </div>
+        </div>
+    </div>
+</div>
+</html>

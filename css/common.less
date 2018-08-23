@@ -1,0 +1,404 @@
+html, body {
+    width: 100%;
+    height: 100%;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 12px;
+}
+body{
+    -webkit-overflow-scrolling: touch;
+}
+/* top */
+  
+@gray: #808080;
+@blue: #366dd2;
+@yellow: #f4d336;
+@red: #d32b2a;
+@white: lighten(@gray, 100%);
+  
+.iconfont{
+    user-select: none;
+}
+.l-header {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 52px;
+    line-height: 31px;
+    font-size: 14px;
+    color: @gray;
+    z-index: 9;
+    padding: 10px 0px;
+    background: lighten(@gray, 100%);
+    .logo {
+      width: 12%;
+      padding-left: 20px;
+      border-right: 2px solid @gray;
+      cursor: pointer;
+      img {
+        width: 95%;
+      }
+    }
+    .l-user {
+      width: 88%;
+      height: 32px;
+      line-height: 32px;
+      padding: 0px 20px 0px 15px;
+      .icon {
+        cursor: pointer;
+      }
+    }
+}
+  
+  
+  /* mobile top */ 
+.m-l-nav {
+    width: 100%;
+    color: @gray;
+    font-size: 12px;
+    position: fixed;
+    padding: 10px 0px 0px;
+    background: lighten(@gray, 100%);
+    z-index: 99;
+    .logo {
+      width: 90%;
+      img {
+        width: 35%;
+        margin-right: 10px;
+        padding-right: 10px;
+        border-right: 2px solid @gray;
+      }
+    }
+    .iconfont {
+      font-size: 18px;
+    }
+}
+.pabo {
+    padding-bottom: 5px;
+}
+  
+.logo-wrapper {
+    // height: 25px;
+    // line-height: 25px;
+    padding: 0px 30px;
+    overflow: hidden;
+}
+  
+  
+.m-nav-ul {
+    margin-bottom: 0px;
+    color: lighten(@gray, 100%);
+    padding: 0px;
+    background: @blue;
+    border-top: 1px solid @blue;
+    a {
+      display: inline-block;
+      width: 100%;
+      color: lighten(@gray, 100%);
+
+      padding: 8px 0px 8px 20px;
+      border-left: 4px solid transparent;
+      .iconfont {
+        padding-right: 35px;
+        font-size: 18px;
+      }
+    }
+    a.current {
+      background: lighten(@blue, 4%);
+      border-left: 4px solid lighten(@gray, 100%);
+    }
+} 
+  
+  
+/* top底部阴影 */
+.m-nav-on{
+    // box-shadow: 0 0 22px #0e0d0d;
+    box-shadow: 0 0 22px darken(@gray, 50%);
+}
+  
+/* 半透明层 */
+.m-nav-black {
+    display: none;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 40px;
+    z-index: 11;
+    background: rgba(0, 0, 0, 0.4);
+}
+  
+/* 左侧菜单 */
+  
+.l-nav {
+    width: 12%;
+    height: 100%;
+    position: relative;
+    z-index: 1;
+    background: @blue;
+}
+.l-nav-left {
+    width: 30%;
+    height: 100%;
+    // background: #3971da;
+    background: lighten(@blue,2%);
+}
+.menu {
+    position: absolute;
+    top: 80px;
+    left: 0px;
+    color: lighten(@gray, 100%);
+    width: 100%;
+}
+  
+.l-nav-ul {
+    width: 100%;
+    padding: 0px;
+    cursor: pointer;
+    a {
+      display: inline-block;
+      width: 100%;
+      color: lighten(@gray, 100%);
+      height: 40px;
+      
+      border-left: 4px solid transparent;
+      border-right: 4px solid transparent;
+      &:hover {
+        border-left: 4px solid lighten(@gray, 100%);
+        border-right: 4px solid lighten(@blue, 4%);
+        background: lighten(@blue, 4%);
+        .iconfont {
+          background: lighten(@blue, 8%);
+        }
+        span {
+          background: lighten(@blue, 4%);
+        }
+      }
+    }
+    .iconfont {
+      display: inline-block;
+      width: 29%;
+      height: 40px;
+      line-height: 40px;
+      text-align: center;
+    //   margin-left: -4px;
+    }
+    span {
+      display: inline-block;
+      width: 71%;
+      padding-left: 12%;
+      margin-left: -4px;
+      height: 40px;
+      line-height: 44px;
+    }
+    .current{
+      border-left: 4px solid lighten(@gray, 100%);
+      border-right: 4px solid lighten(@blue, 4%);
+      background: lighten(@blue, 4%);
+      .iconfont{
+        background: lighten(@blue, 8%);
+      }
+      .text{
+        background: lighten(@blue, 4%);
+      }
+    }
+}
+   
+.scroll::-webkit-scrollbar {
+    display:none;
+  }
+
+ul {
+    list-style: none;
+}
+
+
+@media(max-width: 914px){
+    .l-nav {
+        width: 6%;
+        .l-nav-left {
+            display: none;
+        }
+        .menu {
+            .l-nav-ul {
+                a {
+                    border-right: none;
+                    &:hover {
+                        border-right: none;
+                    }
+                    .iconfont {
+                        width: 100%;
+                    }
+                    span {
+                        display: none;
+                    }
+                }
+                .current {
+                    border-right: none;
+                }
+            }
+        }
+    }
+}
+
+a, a:link, a:visited, a:hover, a:active {
+    text-decoration: none;
+}
+@media(max-width: 914px){
+    .data {
+      width: 94%;
+    }
+  }
+
+@media(min-width: 768px){
+    .modal-dialog {
+      width: 70%;
+    }
+}
+
+// 模态框
+.modal-title {
+    color: lighten(@blue, 10%);
+    font-size: 18px;
+}
+
+.modal-content{
+    border: none;
+    border-radius: 0;
+    box-shadow: 0 0px 20px 0 rgba(151, 186, 200, 0.4)
+}
+
+.close{
+    outline: none;
+}
+
+
+// 表格
+.form-horizontal {
+    .form-group {
+      margin-left: 0;
+      margin-right: 0;
+    }
+    .control-label {
+      text-align: left;
+      padding-left: 20px;
+      padding-bottom: 5px;
+      color: lighten(@blue, 10%);
+    }
+}
+
+
+
+
+textarea {
+    resize: none;
+  }
+
+
+
+//   ie和firefox中隐藏滚动条
+.hideBar{
+    overflow: hidden;
+    height: 100%;
+}
+
+
+
+
+// 去掉input[type=number]的加减控件
+/* 谷歌 */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  appearance: none; 
+
+  margin: 0; 
+}
+/* 火狐 */
+input{
+  appearance:textfield;
+  -moz-appearance:textfield;
+}
+
+
+
+// 保存与删除按钮
+.save,
+.delete{
+    padding: 4px 24px 4px;
+    outline: none;
+    border: none;
+}
+.save {
+    background-color: @blue;
+    // border-color: @blue;
+    color: @white;
+    
+}
+.save:hover{
+    background-color: darken(@blue, 8%);
+    // border-color: darken(@blue, 8%);
+}
+
+.delete {
+    background-color: @gray;
+    // border-color: @gray;
+    color: @white;
+    
+}
+.delete:hover{
+    background-color: darken(@gray, 8%);
+    // border-color: darken(@gray, 8%);
+}
+
+// 模态框的后面一层的背景色 
+.modal-backdrop{
+    background: @white;
+    opacity: .6!important;
+}
+.modal-backdrop.in{
+    opacity: .8;
+}
+
+.news-wrapper{
+    padding: 15px 0;
+    margin: 0;
+}
+.news-wrapper:nth-of-type(odd){
+    // background: #f4f9fd;
+    background: mix(@blue, #f6fafd, .8%);
+}
+
+@media(max-width: 768px){
+    
+    .news-details .row:nth-of-type(2){
+        margin-top: 10px;
+    }
+    .mb_but{
+        padding-right: 0;
+        color: @blue;
+    }
+
+}
+input{
+    box-shadow: none;
+    -webkit-appearance: none;
+}
+textarea{
+    -webkit-appearance: none;
+}
+
+
+
+
+
+/* 敬请期待 */
+#goon{
+    .modal-body{
+        height: 300px;
+        text-align: center;
+        p{
+            font-size: 18px;
+        } 
+    }   
+}
+ 

@@ -1,0 +1,154 @@
+/* 实验室列表 */
+
+@gray: #808080;
+@blue: #366dd2;
+@yellow: #f4d336;
+
+.logo-wrapper {
+  padding: 0px 20px;
+  overflow: hidden;
+}
+.data {
+    position: static;
+    // width: 88%;
+    width: 103%;
+    height: 102%;
+    // background: #e9f1fe;
+    background: lighten(@blue, 44%);
+    // padding: 72px 20px 0;
+    padding: 72px 30px 0 20px;
+    overflow: scroll;
+   
+}
+.data:after {
+  min-height: calc(100% + 1px)
+}
+
+// @media(max-width: 914px){
+//   .data {
+//     width: 102%;
+//   }
+// }
+
+.lab-list{
+    // height: 100%;
+    color: darken(@gray, 10%);
+    background: lighten(@gray, 100%);
+    .lab-list-title{
+      font-weight: 600;
+      color: lighten(@blue, 15%);
+      padding: 10px 25px;
+      .iconfont{
+        color: #c0c0c0;
+        font-size: 13px;
+        margin-left: 8px;
+        cursor: pointer;
+      }
+    }
+  
+}
+
+thead {
+  border-top: 1px solid lighten(@gray, 45%);
+}
+
+.table {
+  &>thead {
+    &>tr {
+      &>th {
+        border-bottom: 1px solid lighten(@gray, 45%);
+      }
+    }
+  }
+}
+
+
+tr {
+  color: darken(@gray, 10%);
+  th {
+    color: lighten(@blue, 10%);
+    &:first-child {
+      text-indent: 1em;
+    }
+  }
+  td {
+    word-break: keep-all;
+    white-space: nowrap;
+    &:first-of-type {
+      text-indent: 1em;
+    }
+    &:last-child{
+      cursor: pointer;
+      &:hover{
+        color: lighten(@blue, 10%);
+      }
+    }
+  }
+}
+.table {
+  tbody {
+    tr {
+      &:nth-child(odd) {
+        background: mix(@blue, #f6fafd, .8%);
+      }
+      td {
+        border-top: none;
+      }
+    }
+  }
+}
+
+
+
+
+
+.form-control {
+  font-size: 12px;
+  box-shadow: none;
+  &:focus {
+    border-color: lighten(@gray, 40%);
+    box-shadow: none;
+  }
+}
+
+
+
+
+
+ 
+  @media(max-width: 768px){
+    .data {
+      width: 100%;
+      // width: 102%;
+      padding: 70px 20px 20px;
+    }
+
+    .lab-list {
+      .lab-list-title{
+        padding: 15px 25px;
+      }
+ 
+    }
+
+  .row {
+        margin-left: 0;
+        margin-right: 0;
+      }
+      .form-horizontal {
+        .form-group {
+          margin-left: 0;
+          margin-right: 0;
+          // padding: 0 20px;
+        }
+        .control-label {
+          text-align: left;
+          // padding-left: 5px;
+        }
+      }   
+
+
+
+  }
+
+
+

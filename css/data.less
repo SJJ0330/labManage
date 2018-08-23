@@ -1,0 +1,178 @@
+
+@gray: #808080;
+@blue: #366dd2;
+@yellow: #f4d336;
+
+
+
+/* 右侧数据 */
+#bar_1,#bar_2{
+  padding: 3%;
+  background: lighten(@gray, 100%); 
+}
+#bar_1{
+  width: 100%; 
+  height: 35%; 
+  
+}
+
+#bar_2{
+  width: 100%; 
+  height: 60%; 
+  margin-top: 15px;
+}
+
+
+.data {
+  width: 88%;
+  height: 100%;
+  // background: #e9f1fe;
+  background: lighten(@blue, 44%);
+  padding: 72px 20px 0;
+  overflow: hidden;
+}
+
+@media(max-width: 914px){
+  .data {
+    width: 94%;
+  }
+}
+
+.xs-data {
+  width: 100%;
+  background: lighten(@blue, 44%);
+  padding: 72px 20px 20px;
+}
+
+.chart-wrapper{
+  width: 48%;
+  height: 100%;
+  float: left;
+}
+.condition{
+  width: 50%;
+  height: 100%;
+  position: relative;
+  right: 0px;
+  background: lighten(@gray, 100%);
+  float: right;
+}
+
+.used{
+  position: absolute;
+  top: -18px;
+  span {
+    color: darken(@gray, 10%);
+  }
+}
+.square{
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  background: @yellow;
+}
+
+.condition-title{
+  padding: 10px 25px;
+  font-weight: 600;
+  color: lighten(@blue, 15%);
+}
+
+
+
+
+
+.scroll{
+  width: 104%;
+  height: 98%;
+  overflow: scroll;
+   
+  padding: 0 0 40px 0;
+  color: darken(@gray, 20%);
+  li{
+    padding: 10px 0;
+    border-left: 10px solid transparent;
+    &:nth-child(odd){
+      background: mix(@blue, #f6fafd, .8%);
+    }
+  }
+  .selected{
+    border-left: 10px solid @yellow;
+  }
+  
+}
+.scroll::-webkit-scrollbar {
+  display:none;
+}
+  
+.num, .room, .use{
+  display: inline-block;
+}
+.num{
+  width: 12%;
+  margin-right: 20px;
+  text-align: center;
+  color: darken(@gray, 10%);
+}
+.room{
+  width: 60%;
+}
+.use{
+  width: 15%;
+  text-align: right;
+}
+
+
+
+@media(max-width:767px){
+  .data {
+    width: 94%;
+    // width: 100%;
+  }
+  .chart-wrapper{
+      width: 100%;
+      float: none;
+  }
+
+  #bar_1,#bar_2{
+    display: flex;
+    justify-content: center;
+  }
+
+  .condition{
+      width: 100%;
+      height: 100%;
+      float: none;
+      margin-top: 40px;
+  }
+  .scroll{
+    width: 100%;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

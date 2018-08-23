@@ -1,0 +1,1693 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>实验室管理</title>
+    <link rel="shortcut icon" href="img/short.ico" type="image/x-icon">
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!-- 日历基本样式 -->
+    <link rel="stylesheet" href="css/fullcalendar.css">
+    <link rel="stylesheet" href="css/fullcalendar.print.min.css" media="print">
+     <!-- Scheduler插件提供了两个额外的日历视图，两者都擅长显示资源（可以分配事件的事物，如房间） -->
+     <link rel="stylesheet" href="css/scheduler.min.css">
+    <!-- 时间段的滑块效果 -->
+    <!-- <link rel="stylesheet" href="css/jquery-ui-1.10.4.custom.min.css"> -->
+    <!-- date日期选择插件 -->
+    <link rel="stylesheet" href="css/bootstrap-datepicker.min.css">
+    <!-- time时间选择插件 -->
+    <!-- <link rel="stylesheet" href="css/DateTimePicker.css"> -->
+    <!-- <link rel="stylesheet" href="css/wickedpicker.min.css"> -->
+    <link rel="stylesheet" href="wickedpicker/dist/wickedpicker.min.css">
+    <!-- 日期范围选择插件 -->
+    <link rel="stylesheet" href="css/daterangepicker.css">
+    <!-- theme -->
+    <link rel="stylesheet" href="css/jquery-ui.min.css">
+    <!-- 弹出框插件 -->
+    <link rel="stylesheet" href="css/ui-dialog.css">
+    <!-- 参与者查询 -->
+    <link rel="stylesheet" href="css/select2.min.css">
+
+    
+    <link rel="stylesheet" href="css/icon.css">
+    <link rel="stylesheet" href="css/common.css">
+
+    <link rel="stylesheet" href="css/myfcd.css">
+    
+    <link rel="stylesheet" href="css/labManageDetails.css">
+
+    
+    
+    <script src="js/jquery-1.10.2.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <!-- <script src="js/jquery-3.2.1.js"></script> -->
+    <!-- <script src="http://lib.sinaapp.com/js/jquery/2.2.4/jquery-2.2.4.min.js"></script> -->
+    <script src="js/bootstrap.min.js"></script>
+    <!-- 时间库 -->
+    <script src="js/moment.min.js"></script> 
+    <!-- 日历基本样式 位置必须置于moment.min.js之后 否则日历不显示 -->
+    <script src="js/fullcalendar.js"></script>
+    <!-- Scheduler插件为您提供了两个额外的日历视图，两者都擅长显示资源（可以分配事件的事物，如房间） -->
+    <script src="js/scheduler.min.js"></script>
+    <!-- theme -->
+    <script src="js/jquery-ui.min.js"></script>
+    <!-- date日期选择插件 -->
+    <script src="js/bootstrap-datepicker.min.js"></script>
+    <script src="js/bootstrap-datepicker.zh-CN.min.js"></script>
+    <!-- time时间选择插件 -->
+    <!-- <script src="js/DateTimePicker.js"></script> -->
+    <!-- <script src="js/wickedpicker.min.js"></script> -->
+    <script src="wickedpicker/dist/wickedpicker.min.js"></script>
+    <!-- 日期范围选择插件 -->
+    <script src="js/daterangepicker.js"></script>
+    <!-- 时间段的滑块效果 -->
+    <!-- <script src="js/jquery-ui-1.10.4.custom.min.js"></script> -->
+    <!-- 弹出框 -->
+    <script src="js/dialog-min.js"></script>
+    <!-- 自定义语言和本地化选项。字符串，默认是"en"。如果要使用多国语言版，需要加载locale-all.js，如果只是单独一种语言版本，则可以加载对应的语言版本js，如中文/locale/zh-cn.js -->
+    <script src="js/zh-cn.js"></script>
+    <!-- 参与者查询 -->
+    <script src="js/select2_cwx.js"></script>
+    <script src="js/pinyin.js"></script>
+
+    <script src="js/echarts.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/labManageDetails.js"></script>
+    
+    
+   
+
+
+    <script>
+        $(function () {
+            // var nowid="000001";
+            // 立即渲染日历或者调整它的大小
+            // 这个方法的使用场景主要是标签页切换，当标签页显示的时候调用此方法显示日程表。
+            // $('form').tabs({
+            //      activate: function (event, ui) {
+            //         $('#calendar').fullCalendar('render');
+            //     }
+            // });
+            // 初始化日历插件
+            $('#calendar').fullCalendar({
+
+// 通用显示
+                // 是否允许使用jquery的ui主题，如果设置为true，则需要加载jQuery ui相关css和js文件。
+                // theme: false,
+                
+                // 设置日历的高度，包括header日历头部，默认未设置，高度根据aspectRatio值自适应。
+                // 如果设置了一个整数，日历的高度将被固定，如果内容太多，则会出现滚动条。
+                // 如果指定了一个函数，每次请求高度更新时都会调用这个函数。这个函数应该返回一个像素值。
+                // 如果设置为'parent'，日历的高度将会与父容器元素匹配。
+                // 如果设置为'auto'，日历高度将会自动适用高度，呈现自然高度并且没有滚动条。
+                height: 'parent',
+
+                // 用来设置当浏览器Resize（窗口大小改变）的时候，自动调整日历的大小。值为布尔类型，默认值为true。
+                // 当设置为true的时候，浏览器Resize的时候会自动调整日程表的大小，并且会触发windowResize回调。
+                handleWindowResize: true,
+
+                // windowResize: function (view) {
+                //     alert('日历窗口随浏览器窗口变化resize');
+                // },
+                
+                // 设置月视图时显示的周数，默认true。如果是true则每次固定显示6周，如果设置为false，则每月根据实际周数显示4，5，6周。
+                fixedWeekCount: false,
+
+                // 设置一周中显示的第一天是哪天，周日是0，周一是1，类推。默认0。
+                firstDay: 1,
+                
+                // 显示周次
+                // weekNumbers: true,
+
+                // 定义日历顶部的按钮和标题。
+                // 如果设置为false，则不显示头部信息。包括left，center,right左中右三个位置，每个位置都可以对应以下不同的配置：
+                // prev: 用于切换到上一月/周/日视图的按钮
+                // next: 用于切换到下一月/周/日视图的按钮
+                // prevYear：用于切换到上一年视图的按钮
+                // nextYear：用于切换到下一年视图的按钮
+                // title: 显示当前月份/周/日信息
+                // month：月视图
+                // agendaWeek：议程周视图
+                // timelineDay 时间线日视图，配合resources 可以添加地点
+                header: {
+                    // prev,next随着月、周、日视图的切换，每次点击跨越的时间段为一个月、一周、一天
+                    left: 'prevYear,nextYear,prev,next,today',//button3为设置按钮
+                    center: 'title',
+                    // 右侧显示不同的视图view，button1、2为新建、查询按钮
+                    // right: 'button1,button2,month,timelineWeek,timelineDay,listMonth,agendaDay',
+                    right: 'button1,button2,month,agendaWeek,listMonth',
+                },
+
+                // 自定义新建按钮、查询按钮、设置按钮
+                customButtons: {
+                   
+                    button2: {
+                        text: "查询",
+                        click: function () {
+                            $(".datepicker").datepicker({
+                                language: "zh-CN",
+                                format: "yyyy-mm-dd",
+                                todayHighlight: true,
+                                autoclose: true,
+                                weekStart: 0
+                            });
+                            dialog({
+                                title: "查询",
+                                content: $("#search"),
+                                okValue: "查询",
+                                ok: function () {
+                                    $("#ui-datepicker-div").remove();
+                                },
+                                button: [{
+                                    value: "打印"
+                                }],
+                                cancelValue: "返回",
+                                cancel: function () {
+                                    $("#ui-datepicker-div").remove();
+                                }
+                            }).showModal();
+
+                        }
+                    },
+                    
+                },
+                
+                // 日历中的文字默认值会根据当前区域语言设置locale而更改。
+                // 如果没有加载 locale/zh-cn.js 文件，可以采用以下方法将默认的英文改为中文。
+                // 设置日历头部各按钮的显示文本信息
+                buttonText: {
+                //     today: '今日',
+                //     month: '月',
+                //     week: '周',
+                //     day: '日',
+                //     list: '月列表',
+                    prevYear: '上一年',
+                    nextYear: '下一年',
+                },
+
+                //月视图下日历格子宽度和高度的比例
+                // aspectRatio: 6.35,
+
+// 时间设置
+
+                // 限制日历可用日期范围，有效范围之外的日期会变灰，用户无法将时间拖动会调整到这些区域。导航箭头也会不可用。
+                // validRange: 
+                //     {
+                //         start: '2018-08-02',
+                //         end: '2018-08-10',
+                    
+                //     },
+                
+                // minTime	设置显示的时间从几点开始
+                // maxTime	设置显示的时间从几天结束
+                minTime: "00:00",
+                maxTime: "24:00",
+
+                //agenda视图下是否显示all-day
+                allDaySlot: true,
+                
+                // 强调日历中的某些时间段, 可以使工作时间段突出显示，在周视图和日视图中显示
+                // 也可以定义多个不同日期不同时间段
+			    // businessHours: {
+				//     dow:[1,2,3,4,5],
+				//     start:"9:00",
+				//     end:"18:00"
+                // },
+                
+                // 是否显示表示当前时间的标志
+                nowIndicator: true,
+
+                // 设置日历y轴上显示的时间文本格式。默认：h(:mm)a，即周视图左侧y轴的时间
+                // 添加scheduler，即添加地点后表示x轴横向的时间文本格式，即日视图上部的时间
+                slotLabelFormat:"HH:mm",
+
+                // 设置显示的日程事件的时间格式，如timeFormat: 'H:mm' 则显示24小时制的像10:30
+                // 设置的是添加的具体的日程上显示的时间, 即月视图和日程列表上显示的事件的时间
+                timeFormat: "HH:mm",
+
+                // 是否显示事件时也显示时间，布尔型，true/false。如果是全天时间则不会显示时间。如果设置为false，则不会在事件上显示时间。
+                displayEventTime: true,
+
+                // 设置日程视图中的事件是否可以重叠，值为布尔类型，默认值为true，事件会相互重叠，最多一半会被遮住。
+                slotEventOverlap: false,
+
+                // 在月视图中，是否显示上个月和下个月的日期，默认true。
+                // showNonCurrentDates: false,
+
+// view 视图
+                // 月、周、日视图title的显示格式
+                views: {
+                    month: {
+                        titleFormat: "YYYY年M月"
+                    },
+                    week: {
+                        titleFormat: "YYYY年M月D日",
+                        columnFormat: "M.D dddd"
+                    },
+                    day: {
+                        titleFormat: "YYYY年M月D日 dddd",
+                        columnFormat: "M/D dddd"
+                    }
+                },
+
+
+// 选择操作
+                
+                // 是否允许用户通过单击或拖动选择日历中的对象，包括天和时间。
+                selectable: true,
+                // 设置是否在用户拖拽事件的时候绘制占位符。值是布尔值，默认值为false。此选项只对日程周视图有效。
+                // 置为 true 的时候，当用户拖拽事件的时候，会绘制一个占位符（和google calendar比较像），设置为 false （默认）的时候，和所有单元格一样。
+                selectHelper: true,
+                // 确定是否允许用户选择事件占用的时间段。值可以是布尔型和函数，默认false。
+                // 如果selectable是激活的，并且当前选项设置为false，则用户不能选择日历中的事件占用的时间段，而如果当前选项设置为true，则可以任意选择事件占用的时间段。
+                selectOverlap: true,
+
+                // 将用户选择限制在某些时间窗口。
+                // 方式一：
+                // selectConstraint:{
+                //     start: '9:00', // a start time (10am in this example)
+                //     end: '18:00', // an end time (6pm in this example)
+                //     dow: [ 1, 2, 3, 4 ]
+                //     // days of week. an array of zero-based day of week integers (0=Sunday)
+                //     // (Monday-Thursday in this example)
+                // },
+                // 方式二：
+                // selectConstraint: 'businessHours',
+
+                // 在日历中选择某个时间之后触发该回调函数。
+                // 点击或拖动日期或时间段，显示新建事件的弹出框
+
+// 鼠标点击事件
+                // 允许天/周名称是否可点击，包括周次weekNumber，点击之后可以跳转到对于的天/周视图，默认false。
+                // 即点击月视图每个矩形右上角表示某一天的数字时或左侧第一列表示周次的数字
+                navLinks: true,
+
+                select: function (start, end, allDay, jsEvent, view,event) {   
+
+                    // 启用日期选择插件，选择年、月、日
+                    $(".datepicker").datepicker({
+                        language: "zh-CN",
+                        format: "yyyy-mm-dd",
+                        todayHighlight: true,
+                        autoclose: true,
+                        weekStart: 0
+                    });
+                    // 启用时间选择插件，选择时、分
+                    $(".timepicki").wickedpicker({
+                        title: '',
+                        showSeconds: false,
+                        twentyFour: true
+                    });
+
+                    // 初始化select2插件，选择参与者
+                    $("#personSearch").select2({
+                        placeholder: "请选择参与人员",
+                        // 可以一键清除全部选项
+                        allowClear: true,
+                    });
+                    // 若选择“全天”，不显示时间段选择框
+                    // 否则还要选择具体的时间段
+                    $("#isallday").click(function () {
+                        if ($("#isallday").prop("checked") == true) {
+                            $("#isallday").val("1");
+                            $("#starttime,#endtime").hide();
+                        } else {
+                            $("#isallday").val("0");
+                            $("#starttime,#endtime").show();
+                        };
+                    });
+
+                    // 新建事件的开始时间和结束时间，即内容框下方显示的时间
+                    // 获取到当前视图view
+                    var view = $('#calendar').fullCalendar('getView');
+                    // 如果当前是月视图，被选择的时间显示格式是YYYY-MM-DD，例如2018-08-08
+                    // 如果当前是周视图，被选择的时间显示的格式是YYYY-MM-DD H:mm，例如2018-08-08 08：08
+                    if(view.name == 'month'){
+                        // bug:在月视图中，当鼠标拖动选择例如2018-08-11至2018-08-12两天时，*弹出框*显示出来的日期是‘2018-08-11至2018-08-13’
+                        // 实际上是08-11 00：00 至 08-13 00：00，所以需要将表示日的数字减去1
+                        // 具体做法是——结束日期的时间戳-86400000，即减去为期一天的毫秒数
+                        var newSelStartDate = $.fullCalendar.formatDate(start, 'YYYY-MM-DD');
+                        var mmend = $.fullCalendar.formatDate(end, 'YYYY-MM-DD');
+                        // 这个结束日期用于弹出框的结束时间显示
+                        var jend = end - 86400000;
+
+                        // 时间戳转为日期
+                        function formatUnixtimestamp(unixtimestamp) {
+                            var unixtimestamp = new Date(unixtimestamp);//时间戳为10位需*1000，时间戳为13位的话不需乘1000
+                            var year = 1900 + unixtimestamp.getYear();
+                            var month = "0" + (unixtimestamp.getMonth() + 1);
+                            var date = "0" + unixtimestamp.getDate();
+                            // var hour = "0" + unixtimestamp.getHours();
+                            // var minute = "0" + unixtimestamp.getMinutes();
+                            // var second = "0" + unixtimestamp.getSeconds();
+                            return year + "-" + month.substring(month.length - 2, month.length) + "-" + date.substring(date.length - 2, date.length)
+                                // + " " + hour.substring(hour.length - 2, hour.length) + ":"
+                                // + minute.substring(minute.length - 2, minute.length) + ":"
+                                // + second.substring(second.length - 2, second.length);
+                        }
+                        var newSelEndDate = formatUnixtimestamp(jend);
+                        // console.log("end: " + end + "\n"
+                        //                 + "jend: " + jend + "\n"
+                        //                 + "newSelEndDate: " + newSelEndDate + "\n"
+                        // );
+
+                        // 在月视图中将用户选择的时间填入开始时间和结束时间框中
+                        $('#startdate').val(newSelStartDate);
+                        $('#stopdate').val(newSelEndDate);
+                        // $('#enddate').show();
+                        // $('#starttime').hide();
+                        // $('#endtime').hide();
+                    } else if(view.name == 'agendaWeek' ){
+                        var newSelStartDate = $.fullCalendar.formatDate(start, 'YYYY-MM-DD HH:mm');
+                        var newSelEndDate = $.fullCalendar.formatDate(end, 'YYYY-MM-DD HH:mm');
+                        // 获得周视图中选择的开始时间和结束时间中的年月日，并将值填入弹出框中对应的日期框
+                        var startYmd = newSelStartDate.substring(0,10);
+                        var endYmd = newSelEndDate.substring(0,10);
+                        $('#startdate').val(startYmd);
+                        $('#stopdate').val(endYmd);
+                        // 获取周视图中选择的开始时间和结束时间中的时分秒，并将值填入弹出框中对应的时间框
+                        var startHms = newSelStartDate.substring(10);
+                        var endHms = newSelEndDate.substring(10);
+                        $('#starttime').val(startHms);
+                        $('#endtime').val(endHms);
+                        // $('#enddate').show();
+                        // $('#starttime').show();
+                        // $('#endtime').show();
+
+                    };
+
+                    $("#dateWrong").hide();
+                    // $("#timedateWrong").hide();
+                    $("#dateNull").hide();
+                    $(".wrongInfo").hide();
+
+                    dialog({
+                        title: "新建日程",
+                        content: $("#dialog-form"),
+                        okValue: "确定",
+                        ok: function () {
+                            var content = $("#content").val();
+                            var startdate = $("#startdate").val();
+                            var starttime = $("#starttime").val().split(" ").join("");
+                            var enddate = $("#stopdate").val();
+                            var endtime = $("#endtime").val().split(" ").join("");
+                            var allDay = $("#isallday").val();
+                            var personsearch = $("#personSearch").val();
+                            var type = $(".select").find("option:selected").text();
+
+                            // 生成随机整数，赋值给事件id
+                            var radomNum = Math.floor(Math.random() * 1000);
+                            // alert("radomNum: " + radomNum);
+                            // var eventid = event.id;
+                            var eventid = radomNum;
+
+                            console.log("event.id: " + eventid + "\n"
+                                        + "type: " + typeof (eventid));
+
+                            // 将事务标题、事务类型和参与者一起放在data数据的title中，传给mydetail.php,
+                            // "*"是分隔字符串
+                            var contentTypePerson = content + "*" + type + "*" + personsearch + "*" + eventid;
+                            // alert("contentTypePerson: " + contentTypePerson);
+                            // 当选择”全天“时，时间戳加上86400000，即一天的毫秒数，向后延一天，这样选择大于一天的日期时，日历上才不会少显示一天
+                            // 当不选择”全天“时，还是用原来的时间
+                            if ($("#isallday").prop("checked")) {
+                                // 日期转为时间戳
+                                var m_enddate = new Date(enddate);
+                                // var newenddate = m_enddate.getTime();
+                                var newenddate = m_enddate.getTime() + 86400000;
+
+                                 // 时间戳转为日期
+                                function formatUnixtimestamp(unixtimestamp) {
+                                    var unixtimestamp = new Date(unixtimestamp);//时间戳为10位需*1000，时间戳为13位的话不需乘1000
+                                    var year = 1900 + unixtimestamp.getYear();
+                                    var month = "0" + (unixtimestamp.getMonth() + 1);
+                                    var date = "0" + unixtimestamp.getDate();
+                                    // var hour = "0" + unixtimestamp.getHours();
+                                    // var minute = "0" + unixtimestamp.getMinutes();
+                                    // var second = "0" + unixtimestamp.getSeconds();
+                                    return year + "-" + month.substring(month.length - 2, month.length) + "-" + date.substring(date.length - 2, date.length)
+                                    // + " " + hour.substring(hour.length - 2, hour.length) + ":"
+                                    // + minute.substring(minute.length - 2, minute.length) + ":"
+                                    // + second.substring(second.length - 2, second.length);
+                                }
+                                var kk = formatUnixtimestamp(newenddate);
+                            }else{
+                                var kk = enddate;
+                            }
+                            // console.log("m_enddate: " + m_enddate + "\n"
+                            //             + "newenddate: " + newenddate + "\n"
+                            //             + "kk: " + kk
+                            //             );
+
+                            // 比较开始时间和结束时间
+                            // 结束时间不能早于开始时间
+                            var sYMD = $("#startdate").val();
+                            var eYMD = $("#stopdate").val();
+                            var sHM = $("#starttime").val();
+                            var eHM = $("#endtime").val();
+
+                            var new_sYMD = new Date(sYMD.replace(/\-/g, "\/"));
+                            var new_eYMD = new Date(eYMD.replace(/\-/g, "\/"));
+
+                            // alert("sYMD:" + sYMD + '\n'
+                            // + "eYMD:" + eYMD + '\n'
+                            // + "new_sYMD:" + new_sYMD + '\n'
+                            // + "new_eYMD:" + new_eYMD + '\n')
+                            
+                            // 比较年、月、日
+                            if (sYMD != "" && eYMD != "" && new_sYMD > new_eYMD) {
+                                $("#dateWrong").show();
+                                // alert("new_sYMD > new_eYMD")
+                                return false;
+                            }else{
+                                $("#dateWrong").hide();
+                            }
+                            // 比较时、分
+                            function CompareDate(t1, t2) {
+                                var date = new Date();
+                                var a = t1.split(":");
+                                var b = t2.split(":");
+                                return date.setHours(a[0], a[1]) > date.setHours(b[0], b[1]);
+                            }
+                            if (CompareDate(sHM, eHM)) {
+                                $("#dateWrong").show();
+                                return false;
+                            }else{
+                                $("#dateWrong").hide();
+                            }
+                            // 验证时间不为空
+                            if(sYMD == "" || eYMD == ""){
+                                $("#dateNull").show();
+                            }else{
+                                $("#dateNull").hide();
+                            }
+
+                            // 验证弹出框信息不为空
+                            if(sYMD && eYMD && content && personSearch.length !== 0){
+                                $(".wrongInfo").hide();
+                                // 因为事务类型、开始结束时间、重复类型都有了默认值，不可能为空
+                                // 所以只有事件标题、内容和参与者不为空的情况下点击“确定”才能关闭弹出框
+                                // 不能关闭，否则下面的程序不执行
+                                // return true;
+                            }else {
+                                // 检测事务标题和内容是否为空
+                                $(".validate").each(function () {
+                                    if ($(this).val() == "") {
+                                        $(this).parent().next(".wrongInfo").show();
+                                    }else{
+                                        $(this).parent().next(".wrongInfo").hide();
+                                    }
+                                });
+                                // 若参与者不为空，隐藏提示信息
+                                if(personSearch.length !== 0){
+                                    $("#personSearch").parent().next(".wrongInfo").hide();
+                                }else{
+                                    $("#personSearch").parent().next(".wrongInfo").show();
+                                }
+                                // 否则，弹出框不关闭
+                                return false;
+                            }
+                            
+                            
+
+                            if (content) {
+                                $.ajax({
+                                    url: 'http://localhost:8888/labmanagement/mydetail.php',
+                                    data: {title: contentTypePerson, sdate: startdate, stime: starttime, edate: kk , etime: endtime, allDay: allDay},
+                                    // data: {id: eventid, title: contentTypePerson, sdate: startdate, stime: starttime, edate: kk , etime: endtime, allDay: allDay},
+                                    // data: {id: eventid, title: contentTypePerson, sdate: startdate, stime: starttime, edate: kk , etime: endtime, allDay: allDay, passornot: passornot},
+                                    type: 'POST',
+                                    dataType: 'json',
+                                    success: function (data) {
+                                        $("#calendar").fullCalendar("renderEvent", data, true);
+                                        // alert("startdate: " + startdate + "\n"
+                                        // + "enddate: " + enddate + "\n"
+                                        // + "allDay: " + allDay);
+                                        // alert("id: " + eventid);
+                                    },
+                                    error: function () {
+                                        alert("Failed");
+                                    }
+
+                                });
+                            };
+                        },
+                        
+                        cancelValue: '取消',
+                        cancel: function () { },
+                        
+                    }).showModal();
+                    
+                },
+
+                // 点击已建立的事件
+                eventClick: function (event, jsEvent, view) {
+                    // 生成随机整数，赋值给事件id
+                    // var radomNum = Math.floor(Math.random() * 1000);
+                    // // alert("radomNum: " + radomNum);
+                    // event.id = radomNum;
+                    // console.log("id: " + event.id);
+
+                    var eventallday = event.allDay;
+                    // alert("eventallday: " + eventallday);
+                    // event.title中包含事务标题、事务类型和参与者的内容，应将三者分开，分别显示在对应的位置中
+                    var eventtitle = event.title;
+                    
+                    // 获取指定字符的下标
+                    function getstrindex(string, str) {
+                        var indexs = [];
+                        // var indexs;
+                        var strlen = string.length;
+                        if (strlen > 0) {
+                            if (str != "") {
+                                for (var i = 0; i < strlen; i++) {
+                                    if (string[i] == str) {
+                                        indexs.push(i);
+                                        // indexs = i;
+                                    };
+                                };
+                            };
+                        };
+                        return indexs;
+                    }
+                    var sepindex = getstrindex(eventtitle, "*");
+                    var mm_edittitle = eventtitle.substring(0,sepindex[0]);
+                    var mm_edittype = eventtitle.substring(sepindex[0]+1,sepindex[1])
+                    var mm_editperson = eventtitle.substring(sepindex[1]+1,sepindex[2]);
+                    var mm_eventid = eventtitle.substring(sepindex[2]+1);
+                    // alert("mm_eventid: " + mm_eventid);
+
+                    // alert("mm_edittitle: " + mm_edittitle + "\n" + 
+                    //         "mm_editperson: " + mm_editperson);
+
+                    $("#editcontent").html(mm_edittitle);
+                    $("#edittype").html(mm_edittype);
+                    $("#editperson").html(mm_editperson);
+
+                    // 显示事件的开始和结束时间
+                    // 如果选择了“全天”，时间格式是YYYY-MM-DD，这会使结束时间多一天，
+                    // 即若你选的结束时间为2018-08-09，它会显示为2018-08-10，所以结束时间的时间戳应减去86400000，强制提前一天
+                    if (eventallday) {
+                        var editstarttime = $.fullCalendar.formatDate(event.start, "YYYY-MM-DD");
+                        var editendtime = $.fullCalendar.formatDate(event.end, "YYYY-MM-DD");
+                        // alert("event.end: " + event.end + "\n" + "editendtime: " + editendtime);
+                        var neweditendtime = event.end - 86400000;
+                        // 时间戳转为日期
+                        function formatUnixtimestamp(unixtimestamp) {
+                            var unixtimestamp = new Date(unixtimestamp);//时间戳为10位需*1000，时间戳为13位的话不需乘1000
+                            var year = 1900 + unixtimestamp.getYear();
+                            var month = "0" + (unixtimestamp.getMonth() + 1);
+                            var date = "0" + unixtimestamp.getDate();
+                            // var hour = "0" + unixtimestamp.getHours();
+                            // var minute = "0" + unixtimestamp.getMinutes();
+                            // var second = "0" + unixtimestamp.getSeconds();
+                            return year + "-" + month.substring(month.length - 2, month.length) + "-" + date.substring(date.length - 2, date.length)
+                                // + " " + hour.substring(hour.length - 2, hour.length) + ":"
+                                // + minute.substring(minute.length - 2, minute.length) + ":"
+                                // + second.substring(second.length - 2, second.length);
+                        }
+                        var m_neweditendtime = formatUnixtimestamp(neweditendtime);
+                        $("#edittime").html(editstarttime + "  至  " + m_neweditendtime);
+                    // 如果没有选择“全天”，时间格式是YYYY-MM-DD HH:mm，
+                    // 此时的结束时间就是你选的时间，不需要减去86400000
+                    }else{
+                        var editstarttime = $.fullCalendar.formatDate(event.start, "YYYY-MM-DD HH:mm");
+                        var editendtime = $.fullCalendar.formatDate(event.end, "YYYY-MM-DD HH:mm");
+                        // alert("event.end: " + event.end + "\n" + "editendtime: " + editendtime);
+                        $("#edittime").html(editstarttime + "  至  " + editendtime);
+                    }
+
+
+                    // 清空单选框选中样式，不能用attr,应该用prop
+                    $("input[type=radio]").prop('checked',false);
+
+                    dialog({
+                        title: "已建日程",
+                        content: $("#edit"),
+                        okValue: "编辑",
+                        ok: function () {
+                            $(".datepicker").datepicker({
+                                language: "zh-CN",
+                                format: "yyyy-mm-dd",
+                                todayHighlight: true,
+                                autoclose: true,
+                                weekStart: 0
+                            });
+                            $(".timepicki").wickedpicker({
+                                // now: time,
+                                title: '',
+                                showSeconds: false,
+                                twentyFour: true
+                            });
+                            // 初始化select2插件
+                            $("#personSearch").select2({
+                                placeholder: "请选择参与人员",
+                                // 可以一键清除全部选项
+                                allowClear: true,
+                            });
+
+                            $("#isallday").click(function () {
+                                if ($("#isallday").prop("checked") == true) {
+                                    $("#isallday").val("1");
+                                    $("#starttime,#endtime").hide();
+                                } else {
+                                    $("#isallday").val("0");
+                                    $("#starttime,#endtime").show();
+                                };
+                            });
+
+                            $("#dateWrong").hide();
+                            // $("#timedateWrong").hide();
+                            $("#dateNull").hide();
+                            $(".wrongInfo").hide();
+                            // 清空单选框选中样式，不能用attr,应该用prop
+                            // $("input[type=radio]").prop('checked',false);
+                            // $("#manager").hide();
+                            
+                            dialog({
+                                title: "新建日程",
+                                content: $("#dialog-form"),
+                                okValue: "确定",
+                                ok: function () {
+
+                                    var content = $("#content").val();
+                                    var startdate = $("#startdate").val();
+                                    var starttime = $("#starttime").val().split(" ").join("");
+                                    var enddate = $("#stopdate").val();
+                                    var endtime = $("#endtime").val().split(" ").join("");
+                                    var allDay = $("#isallday").val();
+                                    var personsearch = $("#personSearch").val();
+                                    var type = $(".select").find("option:selected").text();
+
+                                    // 生成随机整数，赋值给事件id
+                                    var radomNum = Math.floor(Math.random() * 1000);
+                                    // alert("radomNum: " + radomNum);
+                                    // var eventid = event.id;
+                                    var eventid = radomNum;
+                                    
+                                    // 将事务标题、事务类型和参与者一起放在data数据的title中，传给mydetail.php,
+                                    // "*"是分隔字符串
+                                    var contentTypePerson = content + "*" + type + "*" + personsearch + "*" + eventid;
+                                    // alert("contentTypePerson: " + contentTypePerson);
+
+                                    // 当选择”全天“时，时间戳加上86400000，即一天的毫秒数，向后延一天，这样选择的日期超过一天时，日历上才不会少显示一天
+                                    // 当不选择”全天“时，还是用原来的时间戳
+                                    if ($("#isallday").prop("checked")) {
+                                        // 日期转为时间戳
+                                        var m_enddate = new Date(enddate);
+                                        // var newenddate = m_enddate.getTime();
+                                        var newenddate = m_enddate.getTime() + 86400000;
+
+                                        // 时间戳转为日期
+                                        function formatUnixtimestamp(unixtimestamp) {
+                                            var unixtimestamp = new Date(unixtimestamp);//时间戳为10位需*1000，时间戳为13位的话不需乘1000
+                                            var year = 1900 + unixtimestamp.getYear();
+                                            var month = "0" + (unixtimestamp.getMonth() + 1);
+                                            var date = "0" + unixtimestamp.getDate();
+                                            // var hour = "0" + unixtimestamp.getHours();
+                                            // var minute = "0" + unixtimestamp.getMinutes();
+                                            // var second = "0" + unixtimestamp.getSeconds();
+                                            return year + "-" + month.substring(month.length - 2, month.length) + "-" + date.substring(date.length - 2, date.length)
+                                            // + " " + hour.substring(hour.length - 2, hour.length) + ":"
+                                            // + minute.substring(minute.length - 2, minute.length) + ":"
+                                            // + second.substring(second.length - 2, second.length);
+                                        }
+                                        var kk = formatUnixtimestamp(newenddate);
+                                    } else {
+                                        var kk = enddate;
+                                    }
+
+                                    // console.log("m_enddate: " + m_enddate + "\n"
+                                    //             + "newenddate: " + newenddate + "\n"
+                                    //             + "kk: " + kk
+                                    //             );
+
+                                    // 比较开始时间和结束时间
+                                    // 结束时间不能早于开始时间
+                                    var sYMD = $("#startdate").val();
+                                    var eYMD = $("#stopdate").val();
+                                    var sHM = $("#starttime").val();
+                                    var eHM = $("#endtime").val();
+
+                                    var new_sYMD = new Date(sYMD.replace(/\-/g, "\/"));
+                                    var new_eYMD = new Date(eYMD.replace(/\-/g, "\/"));
+
+                                    // alert("sYMD:" + sYMD + '\n'
+                                    // + "eYMD:" + eYMD + '\n'
+                                    // + "new_sYMD:" + new_sYMD + '\n'
+                                    // + "new_eYMD:" + new_eYMD + '\n')
+
+                                    // 比较年、月、日
+                                    if (sYMD != "" && eYMD != "" && new_sYMD > new_eYMD) {
+                                        $("#dateWrong").show();
+                                        // alert("new_sYMD > new_eYMD")
+                                        return false;
+                                    } else {
+                                        $("#dateWrong").hide();
+                                    }
+                                    // 比较时、分
+                                    function CompareDate(t1, t2) {
+                                        var date = new Date();
+                                        var a = t1.split(":");
+                                        var b = t2.split(":");
+                                        return date.setHours(a[0], a[1]) > date.setHours(b[0], b[1]);
+                                    }
+                                    if (CompareDate(sHM, eHM)) {
+                                        $("#dateWrong").show();
+                                        return false;
+                                    } else {
+                                        $("#dateWrong").hide();
+                                    }
+                                    // 验证时间不为空
+                                    if (sYMD == "" || eYMD == "") {
+                                        $("#dateNull").show();
+                                    } else {
+                                        $("#dateNull").hide();
+                                    }
+
+                                    // 验证弹出框信息不为空
+                                    // if(sYMD && eYMD && mEventTitle && content && personSearch.length !== 0){
+                                    if (sYMD && eYMD && content && personSearch.length !== 0) {
+                                        // i = 1;
+                                        $(".wrongInfo").hide();
+                                        // $("#personSearch").parent().next(".wrongInfo").hide();
+                                        // 因为事务类型、开始结束时间、重复类型都有了默认值，不可能为空
+                                        // 所以只有事件标题、内容和参与者不为空的情况下点击“确定”才能关闭弹出框
+                                        // 不能关闭，否则下面的程序不执行
+                                        // return true;
+                                    } else {
+                                        // i = -1;
+                                        // 检测事务标题和内容是否为空
+                                        $(".validate").each(function () {
+                                            if ($(this).val() == "") {
+                                                // alert("请填写事务标题和内容！")
+                                                $(this).parent().next(".wrongInfo").show();
+                                                // $(this).attr("placeholder", "内容不能为空!!!").addClass("invalid");
+                                            } else {
+                                                $(this).parent().next(".wrongInfo").hide();
+                                            }
+                                        });
+                                        // 若参与者不为空，隐藏提示信息
+                                        if (personSearch.length !== 0) {
+                                            $("#personSearch").parent().next(".wrongInfo").hide();
+                                        } else {
+                                            // alert("请选择参与人员！");
+                                            $("#personSearch").parent().next(".wrongInfo").show();
+                                        }
+                                        // 否则，弹出框不关闭
+                                        return false;
+                                    }
+
+
+
+                                    if (content) {
+                                        $.ajax({
+                                            url: 'http://localhost:8888/labmanagement/mydetail.php',
+                                            data: { title: contentTypePerson, sdate: startdate, stime: starttime, edate: kk, etime: endtime, allDay: allDay},
+                                            type: 'POST',
+                                            dataType: 'json',
+                                            success: function (data) {
+                                                $("#calendar").fullCalendar("renderEvent", data, true);
+                                                // alert("startdate: " + startdate + "\n"
+                                                // + "enddate: " + enddate + "\n"
+                                                // + "allDay: " + allDay);
+                                            },
+                                            error: function () {
+                                                alert("Failed");
+                                            }
+
+                                        });
+                                    };
+                                },
+
+                                cancelValue: "取消",
+                                cancel: function () {
+                                    //$("#ui-datepicker-div").remove();
+                                }
+                                
+                            }).showModal();
+                            // 点击已创建的事件进行编辑时，相当于新建一个事件，而将与原事件同名的事件删除
+                            // $("#calendar").fullCalendar("removeEvents", function (event) {
+                            //     if (event.id == eventid) {
+                            //         return true;
+                            //     } else {
+                            //         return false;
+                            //     }
+                            // });
+                            $("#calendar").fullCalendar("removeEvents", function (event) {
+                                if (event.title == eventtitle) {
+                                    return true;
+                                } else {
+                                    return false;
+                                }
+                            });
+                        },
+                        cancelValue: "删除",
+                        cancel: function () {
+                            $("#calendar").fullCalendar("removeEvents", function (event) {
+                                if (event.title == eventtitle) {
+                                    return true;
+                                } else {
+                                    return false;
+                                }
+                            });
+                            // $("#calendar").fullCalendar("removeEvents", event.id)
+                        },
+                        button: [
+                        {
+                            value: "确定是否通过",
+                            callback: function () {
+                                // 将状态值放在data中传给mydetail.php,
+                                // mydetail.php根据不同的状态值给事件显示不同的颜色和表示当前状态的文本
+                                var passornot = $("input[type=radio]:checked").val();
+                                // console.log("passornot: " + passornot);
+
+                                var content = $("#content").val();
+                                    var startdate = $("#startdate").val();
+                                    var starttime = $("#starttime").val().split(" ").join("");
+                                    var enddate = $("#stopdate").val();
+                                    var endtime = $("#endtime").val().split(" ").join("");
+                                    var allDay = $("#isallday").val();
+                                    var personsearch = $("#personSearch").val();
+                                    var type = $(".select").find("option:selected").text();
+                                    
+                                    // 将事务标题、事务类型和参与者一起放在data数据的title中，传给mydetail.php,
+                                    // "*"是分隔字符串
+                                    var contentTypePerson = content + "*" + type + "*" + personsearch;
+                                    // alert("contentTypePerson: " + contentTypePerson);
+
+                                    // 当选择”全天“时，时间戳加上86400000，即一天的毫秒数，向后延一天，这样选择的日期超过一天时，日历上才不会少显示一天
+                                    // 当不选择”全天“时，还是用原来的时间戳
+                                    if ($("#isallday").prop("checked")) {
+                                        // 日期转为时间戳
+                                        var m_enddate = new Date(enddate);
+                                        // var newenddate = m_enddate.getTime();
+                                        var newenddate = m_enddate.getTime() + 86400000;
+
+                                        // 时间戳转为日期
+                                        function formatUnixtimestamp(unixtimestamp) {
+                                            var unixtimestamp = new Date(unixtimestamp);//时间戳为10位需*1000，时间戳为13位的话不需乘1000
+                                            var year = 1900 + unixtimestamp.getYear();
+                                            var month = "0" + (unixtimestamp.getMonth() + 1);
+                                            var date = "0" + unixtimestamp.getDate();
+                                            // var hour = "0" + unixtimestamp.getHours();
+                                            // var minute = "0" + unixtimestamp.getMinutes();
+                                            // var second = "0" + unixtimestamp.getSeconds();
+                                            return year + "-" + month.substring(month.length - 2, month.length) + "-" + date.substring(date.length - 2, date.length)
+                                            // + " " + hour.substring(hour.length - 2, hour.length) + ":"
+                                            // + minute.substring(minute.length - 2, minute.length) + ":"
+                                            // + second.substring(second.length - 2, second.length);
+                                        }
+                                        var kk = formatUnixtimestamp(newenddate);
+                                    } else {
+                                        var kk = enddate;
+                                    }
+                            
+
+                                $.ajax({
+                                    url: 'http://localhost:8888/labmanagement/mydetail.php',
+                                    // data: {passornot: passornot },
+                                    data: {title:contentTypePerson,sdate: startdate, stime: starttime, edate: kk , etime: endtime, allDay: allDay,passornot: passornot},
+                                    type: 'POST',
+                                    dataType: 'json',
+                                    success: function (data) {
+                                        $("#calendar").fullCalendar("renderEvent", data, true);
+                                        // alert("startdate: " + startdate + "\n"
+                                        // + "enddate: " + enddate + "\n"
+                                        // + "allDay: " + allDay);
+                                        // alert("hhhhhaaahah" + "\n" + "color: " + event.color);
+                                    },
+                                    error: function () {
+                                        alert("Failed");
+                                    }
+
+                                });
+                            }
+                        },
+                        {
+                            value: "取消",
+                            callback: function () {},
+                        }],
+
+                    }).showModal();
+                },
+		
+
+                allDayDefault:false,
+			    
+                // 限制显示在一天的事件数。值可以为布尔型和数字整型，默认false。
+                // 当事件太多时，会显示一个看起来像“+ 2更多”的链接。当用户点击链接的具体行动由eventlimitclick控制。
+                // false值（默认值）将显示所有事件。
+                // true值将事件数限制为日单元格的高度。
+                // 整数值将事件限制为特定行数。
+                eventLimit: 3,
+                eventLimitText: '更多',
+
+                // 当用户点击“更多”链接时发生的动作，支持"popover", "week", "day", view name, function。
+                // "popover"，默认，在单元格上显示一个矩形面板，并显示当天的全部事件列表。
+                // "week"，进入周视图。
+                // "day"，进入日视图。
+                // view name，进入定义的任意可用视图。
+                // function，触发回调函数。
+                eventLimitClick: 'popover',
+
+                // 事件数据源
+                // 添加事件
+                // events: [
+                //     {
+                //         // 事件名称
+                //         title: '爬山',
+                //         // 事件开始日期/时间，必选。格式为ISO8601字符串或UNIX时间戳
+                //         start: '2018-08-14',
+                //         // 事件结束日期/时间，可选。
+                //         end: '2018-08-14',
+                //         // 布尔型，true或false，可选项。
+                //         // 事件是否发生在特定的时间。 该属性影响是否显示事件的时间。 此外，在议程视图中，确定是否显示在“全天”部分。
+                //         allDay: true,
+                //         userid:"000987",
+                //         status:"",
+                //     },
+                //     {
+                //         title: '会议1',
+                //         start: '2018-08-06T14:30:00',
+                //         end: '2018-08-06T16:30:00',
+                //         allDay: false,
+                //         userid:"000001",
+                //         // 已建立的日程可拖动，日期跟着改变
+                //         // editable: true,
+                //     },
+                //     {
+                //         title: '会议1',
+                //         start: '2018-08-06T14:30:00',
+                //         end: '2018-08-06T16:30:00',
+                //         allDay: false,
+                //     },
+                //     {
+                //         title: '聚会',
+                //         start: '2018-08-09T14:30:00',
+                //         end: '2018-08-09T18:30:00',
+                //         allDay: false,
+                //     },
+                //     {
+                //         title: '散步',
+                //         start: '2018-08-19T14:30:00',
+                //         end: '2018-08-19T14:30:00',
+                //         allDay: false,
+                //     },
+                //     {
+                //         title: '点击百度',
+                //         // 事件链接地址，字符串，可选。
+                //         // 当单击事件的时候会跳转到对应的url。
+                //         url: 'http://www.baidu.com/',
+                //         start: '2018-08-19T10:30:00',
+                //         allDay: false,
+                //     },
+                //     {
+                //         title: '开会',
+                //         start: '2018-08-19T16:30:00',
+                //         allDay: false,
+                //     },
+                //     {
+                //         title: '打印材料',
+                //         start: '2018-08-19T17:30:00',
+                //         allDay: false,
+                //     },
+                //     {
+                //         title: '整理文件',
+                //         start: '2018-08-19T18:30:00',
+                //         allDay: false,
+                //     },
+                //     {
+                //         title: '提交论文',
+                //         start: '2018-08-19T19:30:00',
+                //         allDay: false,
+                //     },
+                //     {
+                //         title: '4天的会议',
+                //         start: '2018-08-01',
+                //         end: '2018-08-05',
+                //         allDay: true,
+                //     },
+                //     {
+                //         title: '开会',
+                //         start: '2018-08-23T14:30:00',
+                //         end: '2018-08-23T22:30:00',
+                //         allDay: false,
+                //     }
+                //     // 请确保最后一个事件后不能有逗号，否则IE下会出错。
+                    
+                // ],
+                
+
+                
+
+            });
+
+        });
+
+        
+    </script>
+
+
+
+</head>
+<body>
+
+    <!-- top -->
+    <div class="l-header hidden-xs">
+        <div class="logo pull-left">
+            <img src="img/color-logo-2.png" alt="">
+        </div>
+        <div class="l-user pull-right">
+            <div class="pull-left">实训基地管理信息系统</div>
+            <div class="pull-right icon">
+                <i class="iconfont">&#xe6b8;</i>
+                <span>User</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- mobile top -->
+    <div class="container-fluid m-l-nav visible-xs">
+        <div class="row pabo">
+            <div class="logo-wrapper col-sm-12">
+                <div class="logo pull-left">
+                    <img src="img/color-logo-2.png" alt="">
+                    <span>实训基地管理信息系统</span>
+                </div>
+                <div class="m-user pull-right">
+                    <i class="nav-btn iconfont">&#xe80e;</i>
+                </div>
+            </div>
+        </div>
+        <div class="m-nav-list">
+            <div class="m-nav-ul">
+                <a href="data.html">
+                    <i class="iconfont">&#xe6b3;</i>
+                    <span>数据大屏</span>
+                </a>
+                <a href="" data-toggle="modal" data-target="#goon">
+                    <i class="iconfont">&#xe69e;</i>
+                    <span>教学管理</span>
+                </a>
+                <a href="#" class="current">
+                    <i class="iconfont">&#xe6b4;</i>
+                    <span>实验室管理</span>
+                </a>
+                <a href="" data-toggle="modal" data-target="#goon">
+                    <i class="iconfont">&#xe6cb;</i>
+                    <span>物料管理</span>
+                </a>
+                <a href="news.html">
+                    <i class="iconfont">&#xe6fb;</i>
+                    <span>新闻、公告</span>
+                </a>
+                <a href="user.html">
+                    <i class="iconfont">&#xe6b8;</i>
+                    <span>用户管理</span>
+                </a>
+            </div>
+        </div>
+    </div>
+    <!-- 半透明层 -->
+    <div class="m-nav-black"></div>
+
+
+    <!-- 左侧菜单aside -->
+    <div class="l-nav pull-left hidden-xs">
+        <div class="l-nav-left"></div>
+        <div class="menu">
+            <div class="l-nav-ul">
+                <a href="data.html">
+                    <i class="iconfont">&#xe6b3;</i>
+                    <span class="text">数据大屏</span>
+                </a>
+                <a href="" data-toggle="modal" data-target="#goon">
+                    <i class="iconfont">&#xe69e;</i>
+                    <span class="text">教学管理</span>
+                </a>
+                <a href="#" class="current">
+                    <i class="iconfont">&#xe6b4;</i>
+                    <span class="text">实验室管理</span>
+                </a>
+                <a href="" data-toggle="modal" data-target="#goon">
+                    <i class="iconfont">&#xe6cb;</i>
+                    <span class="text">物料管理</span>
+                </a>
+                <a href="news.html">
+                    <i class="iconfont">&#xe6fb;</i>
+                    <span class="text">新闻、公告</span>
+                </a>
+                <a href="user.html">
+                    <i class="iconfont">&#xe6b8;</i>
+                    <span class="text">用户管理</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- 实验室管理详情 -->
+
+    <!-- 药剂实验室（一） -->
+    <div class="hideBar">
+        <!-- <div class="data pull-right"> -->
+        <div class="data">
+            <div class="lab-list">
+                <div class="lab-list-title">药剂实验室（一）</div>
+                <form class="form-horizontal" action="" role="form">
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-tabs">
+                        <li role="presentation" class="active">
+                            <a href="#home" aria-controls="home" role="tab" data-toggle="tab">实验室信息</a>
+                        </li>
+                        <li role="presentation">
+                            <a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">预约信息</a>
+                        </li>
+                    </ul>
+                    <!-- Tab panes -->
+                    <div class="tab-content">
+                        <!-- 实验室信息 -->
+                        <div role="tabpanel" class="tab-pane active" id="home">
+                            <!-- 基本信息 -->
+                            <div class="basic-info">
+                                <div class="basic-title">基础信息</div>
+                                <div class="row">
+                                    <div class="col-xs-12 col-sm-4 form-group ">
+                                        <label class="col-xs-3 col-sm-6 col-md-4 col-lg-4 control-label">实验室名称</label>
+                                        <div class="col-xs-9 col-sm-6 col-md-8 col-lg-8">
+                                            <input class="form-control" type="text" name="labName" id="labName">
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-4 form-group ">
+                                        <label class="col-xs-3 col-sm-6 col-md-4 col-lg-4 control-label">教室负责人</label>
+                                        <div class="col-xs-9 col-sm-6 col-md-8 col-lg-8">
+                                            <input class="form-control" type="text" name="lableader" id="lableader">
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-4 form-group ">
+                                        <label class="col-xs-3 col-sm-6 col-md-4 col-lg-4 control-label">教室负责人</label>
+                                        <div class="col-xs-9 col-sm-6 col-md-8 col-lg-8">
+                                            <input class="form-control" type="text" name="lableader" id="lableader">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-12 col-sm-4 form-group ">
+                                        <label class="col-xs-3 col-sm-6 col-md-4 col-lg-4 control-label">教室编号</label>
+                                        <div class="col-xs-9 col-sm-6 col-md-8 col-lg-8">
+                                            <input class="form-control" type="number" name="labNumber" id="labNumber">
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-4 form-group ">
+                                        <label class="col-xs-3 col-sm-6 col-md-4 col-lg-4 control-label">教室编号</label>
+                                        <div class="col-xs-9 col-sm-6 col-md-8 col-lg-8">
+                                            <input class="form-control" type="number" name="labNumber" id="labNumber">
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-4 form-group ">
+                                        <label class="col-xs-3 col-sm-6 col-md-4 col-lg-4 control-label">教室负责人</label>
+                                        <div class="col-xs-9 col-sm-6 col-md-8 col-lg-8">
+                                            <input class="form-control" type="text" name="lableader" id="lableader">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <!-- 实验室开放时间 -->
+                                    <div class="device-info col-xs-12 col-sm-8 form-group">
+                                        <label class="col-xs-12 col-sm-12 control-label">实验室开放时间
+                                        </label>
+                                        <div class="col-xs-12 col-sm-12 time-tabresp table-responsive">
+                                            <table class="time-table table">
+                                                <thead>
+                                                    <tr class="time-tr">
+                                                        <th class="num">序号</th>
+                                                        <th>时间范围</th>
+                                                        <th class="operate">操作</th>
+                                                        <th></th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="openTime">
+                                                    <tr>
+                                                        <td class="num">01</td>
+                                                        <td class="click selectTime">请选择时间范围</td>
+                                                        <td class="edit">编辑</td>
+                                                        <td class="del">删除</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="num">02</td>
+                                                        <td class="click">请选择时间范围</td>
+                                                        <td class="edit">编辑</td>
+                                                        <td class="del">删除</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="num">03</td>
+                                                        <td class="click">请选择时间范围</td>
+                                                        <td class="edit">编辑</td>
+                                                        <td class="del">删除</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="num">04</td>
+                                                        <td class="click">请选择时间范围</td>
+                                                        <td class="edit">编辑</td>
+                                                        <td class="del">删除</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="num">05</td>
+                                                        <td class="click">请选择时间范围</td>
+                                                        <td class="edit">编辑</td>
+                                                        <td class="del">删除</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <!-- 备注 -->
+                                    <div class="col-xs-12 col-sm-4 form-group">
+                                        <label class="col-xs-12 col-sm-12 control-label">备注</label>
+                                        <div class="col-xs-12 col-sm-12 pull-right remark-box">
+                                            <textarea class="form-control" name="remark" id="remark" rows="11" placeholder="项目备注信息">哈哈哈哈哈哈哈h</textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row refresh">
+                                    <div class="col-xs-12 col-sm-12">
+                                        <button type="button" class="rebtn">保存</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- 设备信息 -->
+                            <div class="device-info">
+                                <div class="device-title">设备信息
+                                    <!-- Button trigger modal -->
+                                    <i class="iconfont" data-toggle="modal" data-target="#myModal">&#xe678;</i>
+                                    
+                                </div>
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th class="num">序号</th>
+                                                <th>设备名称</th>
+                                                <th>数量</th>
+                                                <th>入库时间</th>
+                                                <th>操作</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td class="num">01</td>
+                                                <td>酸度计</td>
+                                                <td>12</td>
+                                                <td>2018/04/03</td>
+                                                <td class="m-detail">详情</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="num">02</td>
+                                                <td>酸度计</td>
+                                                <td>12</td>
+                                                <td>2018/04/03</td>
+                                                <td class="m-detail">详情</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="num">03</td>
+                                                <td>酸度计</td>
+                                                <td>12</td>
+                                                <td>2018/04/03</td>
+                                                <td class="m-detail">详情</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="num">04</td>
+                                                <td>酸度计</td>
+                                                <td>12</td>
+                                                <td>2018/04/03</td>
+                                                <td class="m-detail">详情</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="num">05</td>
+                                                <td>酸度计</td>
+                                                <td>12</td>
+                                                <td>2018/04/03</td>
+                                                <td class="m-detail">详情</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="num">06</td>
+                                                <td>酸度计</td>
+                                                <td>12</td>
+                                                <td>2018/04/03</td>
+                                                <td class="m-detail">详情</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="num">07</td>
+                                                <td>酸度计</td>
+                                                <td>12</td>
+                                                <td>2018/04/03</td>
+                                                <td class="m-detail">详情</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="num">08</td>
+                                                <td>酸度计</td>
+                                                <td>12</td>
+                                                <td>2018/04/03</td>
+                                                <td class="m-detail">详情</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="num">09</td>
+                                                <td>酸度计</td>
+                                                <td>12</td>
+                                                <td>2018/04/03</td>
+                                                <td class="m-detail">详情</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="num">09</td>
+                                                <td>酸度计</td>
+                                                <td>12</td>
+                                                <td>2018/04/03</td>
+                                                <td class="m-detail">详情</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="num">09</td>
+                                                <td>酸度计</td>
+                                                <td>12</td>
+                                                <td>2018/04/03</td>
+                                                <td class="m-detail">详情</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="num">09</td>
+                                                <td>酸度计</td>
+                                                <td>12</td>
+                                                <td>2018/04/03</td>
+                                                <td class="m-detail">详情</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="num">09</td>
+                                                <td>酸度计</td>
+                                                <td>12</td>
+                                                <td>2018/04/03</td>
+                                                <td class="m-detail">详情</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="num">09</td>
+                                                <td>酸度计</td>
+                                                <td>12</td>
+                                                <td>2018/04/03</td>
+                                                <td class="m-detail">详情</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="num">09</td>
+                                                <td>酸度计</td>
+                                                <td>12</td>
+                                                <td>2018/04/03</td>
+                                                <td class="m-detail">详情</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="num">09</td>
+                                                <td>酸度计</td>
+                                                <td>12</td>
+                                                <td>2018/04/03</td>
+                                                <td class="m-detail">详情</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="num">09</td>
+                                                <td>酸度计</td>
+                                                <td>12</td>
+                                                <td>2018/04/03</td>
+                                                <td class="m-detail">详情</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="num">09</td>
+                                                <td>酸度计</td>
+                                                <td>12</td>
+                                                <td>2018/04/03</td>
+                                                <td class="m-detail">详情</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            
+                            </div>
+                
+                        </div>
+
+                        <!-- 预约信息 -->
+                        <div role="tabpanel" class="tab-pane" id="profile">
+                            <div id="calendar"></div>
+
+                            <!-- 点击弹出填写新建事件的详细信息 -->
+                            <div id="dialog-form" style="display:none">
+                                <form class="form-inline">
+                                    
+                                    <!-- <p>
+                                        <label>事务标题：</label>
+                                        <input class="validate form-control" type="text" id="m-eventTitle">
+                                    </p>
+                                    <p class="wrongInfo" style="margin-left:70px;color:red;">该内容不能为空！！！</p>
+                                     -->
+                                    <p>
+                                        <label>事务内容：</label>
+                                        <textarea class="validate textarea" rows="4" id="content"></textarea>
+                                    </p>
+                                    <p class="wrongInfo" style="margin-left:70px;color:red;">该内容不能为空！！！</p>
+                                    <p>
+                                        <label>事务类型：</label>
+                                        <select class="select">
+                                            <option selected>工作事务</option>
+                                            <option>个人事务</option>
+                                        </select>
+                                    </p>
+                                    <!-- DateTimePicker时间插件所需 -->
+                                    <div id="dtBox"></div>
+                                    <p>
+                                        <label>开始时间：</label>
+                                        <input type="text" class="time datepicker" id="startdate">
+                                        <input type="text" data-field="time" class="time timepicki" id="starttime">
+                                    </p>
+                                    <!-- <p id="enddate">
+                                        <label>结束时间：</label>
+                                        <input type="text" class="time datepicker" id="stopdate">
+                                        <input type="text" data-field="time" class="time timepicki" id="endtime">
+                                    </p> -->
+                                    <p style="display:block" id="enddate">
+                                        <label>结束时间：</label>
+                                        <input type="text" class="time datepicker" id="stopdate">
+                                        <input type="text" class="time timepicki" id="endtime">
+                                    </p>
+                                    <p id="dateWrong" style="display:none;margin-left:70px;color:red;">请选择正确的日期！！！</p>
+                                    <p id="dateNull" style="display:none;margin-left:70px;color:red;">该内容不能为空！！！</p>
+                                    
+                                    <p class="checkbox check">
+                                        <label class="checkbox-inline"><input type="checkbox" id="isallday">全天</label>
+                                        <!-- <label class="checkbox-inline"><input type="checkbox" id="end">结束时间</label> -->
+                                        <!-- <label class="checkbox-inline"><input type="checkbox" id="repeat">重复</label> -->
+                                    </p>
+                                    <p>
+                                        <label>&nbsp;&nbsp;&nbsp;参与者：</label>
+                                        <select id="personSearch" class="personSearch" name="states[]" multiple="multiple">
+                                            <option value="北京">北京</option>
+                                            <option value="天津">天津</option>
+                                            <option value="河北">河北</option>
+                                            <option value="山西">山西</option>
+                                            <option value="内蒙古">内蒙古</option>
+                                            <option value="辽宁">辽宁</option>
+                                            <option value="吉林">吉林</option>
+                                            <option value="黑龙江">黑龙江</option>
+                                            <option value="上海">上海</option>
+                                            <option value="江苏">江苏</option>
+                                            <option value="浙江">浙江</option>
+                                            <option value="安徽">安徽</option>
+                                            <option value="福建">福建</option>
+                                            <option value="江西">江西</option>
+                                            <option value="山东">山东</option>
+                                            <option value="河南">河南</option>
+                                            <option value="湖北">湖北</option>
+                                            <option value="湖南">湖南</option>
+                                            <option value="广东">广东</option>
+                                            <option value="广西">广西</option>
+                                            <option value="海南">海南</option>
+                                            <option value="重庆">重庆</option>
+                                            <option value="四川">四川</option>
+                                            <option value="贵州">贵州</option>
+                                            <option value="云南">云南</option>
+                                            <option value="西藏">西藏</option>
+                                            <option value="陕西">陕西</option>
+                                            <option value="甘肃">甘肃</option>
+                                            <option value="青海">青海</option>
+                                            <option value="宁夏">宁夏</option>
+                                            <option value="新疆">新疆</option>
+                                            <option value="台湾">台湾</option>
+                                            <option value="香港">香港</option>
+                                            <option value="澳门">澳门</option>
+                                        </select>
+                                    </p>
+                                    <p class="wrongInfo" style="margin-left:70px;color:red;">该内容不能为空！！！</p>
+                                    <!-- <p></p> -->
+                                    <div id="manager" style="display: none;">
+                                        <label>管理员决策：
+                                            <input type="radio" name="passOrNot" value="pass"> 通过
+                                            <input type="radio" name="passOrNot" value="failed"> 失败
+                                        </label>
+                                    </div>
+                                    
+                                </form>
+                            </div>
+
+                            <!-- 显示已建立的日程 -->
+                            <div id="edit" style="display: none">
+                                <div class="mleft">
+                                    <span>事务内容：</span>
+                                </div>
+                                <div class="mright">
+                                    <textarea id="editcontent" rows="7" readonly="readonly"></textarea>
+                                </div>
+                                <div class="mleft">
+                                    <span>事务类型：</span>
+                                </div>
+                                <div class="mright">
+                                    <div id="edittype"></div>
+                                </div>
+                                <div class="mleft">
+                                    <span>事务时间：</span>
+                                </div>
+                                <div class="mright">
+                                    <div id="edittime"></div>
+                                </div>
+                            
+                                <div class="mleft">
+                                    <span>参与者：</span>
+                                </div>
+                                <div class="mright">
+                                    <textarea id="editperson" rows="4" readonly="readonly"></textarea>
+                                </div>
+                                <div id="manager">
+                                    <label>管理员决策：
+                                        <input type="radio" name="passOrNot" value="pass"> 通过
+                                        <input type="radio" name="passOrNot" value="failed"> 失败
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- 查询按钮 弹出框 -->
+                            <!-- <div id="search" style="display:none">
+                                <form class="form-inline">
+                                    <p>
+                                        <label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;日期：</label>
+                                        <input type="text" class="sear datepicker">
+                                        <span>至</span>
+                                        <input type="text" class="sear datepicker">
+                                    </p>
+                                    <p>
+                                        <label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;状态：</label>
+                                        <select>
+                                            <option value="">未进行</option>
+                                            <option value="">进行中</option>
+                                            <option value="">已完成</option>
+                                            <option value="">已超时</option>
+                                        </select>
+                                    </p>
+                                    <p>
+                                        <label>事务类型：</label>
+                                        <select>
+                                            <option value="">工作事务</option>
+                                            <option value="">个人事务</option>
+                                        </select>
+                                    </p>
+                                    <p>
+                                        <label>事务内容：</label>
+                                        <input type="text">
+                                    </p>
+                                </form>
+                            </div> -->
+                        </div>
+                    </div>
+                </form>
+    
+            </div>
+        </div>
+    </div>
+    
+
+</body>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">设备信息</h4>
+            </div>
+            <div class="modal-body">
+                <div class="basic-info form-horizontal">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-4 form-group ">
+                            <label class="col-xs-12 col-sm-12 col-md-12 col-lg-12 control-label label-name">实验室名称</label>
+                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                <input class="form-control" type="text" name="labName" id="labName">
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-4 form-group ">
+                            <label class="col-xs-12 col-sm-12 col-md-12 col-lg-12 control-label label-name">教室编号</label>
+                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                <input class="form-control" type="number" name="labNumber" id="labNumber">
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-4 form-group ">
+                            <label class="col-xs-12 col-sm-12 col-md-12 col-lg-12 control-label label-name">教室负责人</label>
+                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                <input class="form-control" type="text" name="lableader" id="lableader">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-4 form-group ">
+                            <label class="col-xs-12 col-sm-12 col-md-12 col-lg-12 control-label label-name">实验室开放时间</label>
+                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                <input class="form-control" type="number" name="openTime" id="openTime">
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-4 form-group ">
+                            <label class="col-xs-12 col-sm-12 col-md-12 col-lg-12 control-label label-name">教室编号</label>
+                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                <input class="form-control" type="number" name="labNumber" id="labNumber">
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-4 form-group ">
+                            <label class="col-xs-12 col-sm-12 col-md-12 col-lg-12 control-label label-name">教室负责人</label>
+                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                <input class="form-control" type="text" name="lableader" id="lableader">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 form-group">
+                            <label class="col-xs-12 col-sm-12 control-label label-name">备注</label>
+                            <div class="col-xs-12 col-sm-12">
+                                <textarea class="form-control" name="remark" id="remark" rows="5" placeholder="项目备注信息">哈哈哈哈哈哈哈h</textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="delete pull-left">删除</button>
+                <button type="button" class="save pull-right">保存</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="goon" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <p>该页面尚未开放！</p>
+                <img src="img/true.png" alt="">
+            </div>
+        </div>
+    </div>
+</div>
+
+</html>

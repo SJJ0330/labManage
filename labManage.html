@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>实验室管理</title>
+    <link rel="shortcut icon" href="img/short.ico" type="image/x-icon">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/icon.css">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/labManage.css">
+    <script src="js/echarts.js"></script>
+    <script src="js/jquery-3.2.1.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/common.js"></script>
+
+    
+
+
+</head>
+<body>
+
+    <!-- top -->
+    <div class="l-header hidden-xs">
+        <div class="logo pull-left">
+            <img src="img/color-logo-2.png" alt="">
+        </div>
+        <div class="l-user pull-right">
+            <div class="pull-left">实训基地管理信息系统</div>
+            <div class="pull-right icon">
+                <i class="iconfont">&#xe6b8;</i>
+                <span>User</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- mobile top -->
+    <div class="container-fluid m-l-nav visible-xs">
+        <div class="row pabo">
+            <div class="logo-wrapper col-sm-12">
+                <div class="logo pull-left">
+                    <img src="img/color-logo-2.png" alt="">
+                    <span>实训基地管理信息系统</span>
+                </div>
+                <div class="m-user pull-right">
+                    <i class="nav-btn iconfont">&#xe80e;</i>
+                </div>
+            </div>
+        </div>
+        <div class="m-nav-list">
+            <div class="m-nav-ul">
+                <a href="data.html">
+                    <i class="iconfont">&#xe6b3;</i>
+                    <span>数据大屏</span>
+                </a>
+                <a href="" data-toggle="modal" data-target="#goon">
+                    <i class="iconfont">&#xe69e;</i>
+                    <span>教学管理</span>
+                </a>
+                <a href="#" class="current">
+                    <i class="iconfont">&#xe6b4;</i>
+                    <span>实验室管理</span>
+                </a>
+                <a href="" data-toggle="modal" data-target="#goon">
+                    <i class="iconfont">&#xe6cb;</i>
+                    <span>物料管理</span>
+                </a>
+                <a href="news.html">
+                    <i class="iconfont">&#xe6fb;</i>
+                    <span>新闻、公告</span>
+                </a>
+                <a href="user.html">
+                    <i class="iconfont">&#xe6b8;</i>
+                    <span>用户管理</span>
+                </a>
+            </div>
+        </div>
+    </div>
+    <!-- 半透明层 -->
+    <div class="m-nav-black"></div>
+
+
+    <!-- 左侧菜单aside -->
+    <div class="l-nav pull-left hidden-xs">
+        <div class="l-nav-left"></div>
+        <div class="menu">
+            <div class="l-nav-ul">
+                <a href="data.html">
+                    <i class="iconfont">&#xe6b3;</i>
+                    <span class="text">数据大屏</span>
+                </a>
+                <a data-toggle="modal" data-target="#goon">
+                    <i class="iconfont">&#xe69e;</i>
+                    <span class="text">教学管理</span>
+                </a>
+                <a href="#" class="current">
+                    <i class="iconfont">&#xe6b4;</i>
+                    <span class="text">实验室管理</span>
+                </a>
+                <a href="" data-toggle="modal" data-target="#goon">
+                    <i class="iconfont">&#xe6cb;</i>
+                    <span class="text">物料管理</span>
+                </a>
+                <a href="news.html">
+                    <i class="iconfont">&#xe6fb;</i>
+                    <span class="text">新闻、公告</span>
+                </a>
+                <a href="user.html">
+                    <i class="iconfont">&#xe6b8;</i>
+                    <span class="text">用户管理</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- 右侧 数据 -->
+
+    <!-- 实验室列表 -->
+    <div class="data pull-right">
+        <div class="lab-list">
+            <div class="lab-list-title">
+                实验室列表
+                <!-- Button trigger modal -->
+                <i class="iconfont" data-toggle="modal" data-target="#myModal">&#xe678;</i>
+                
+            </div>
+            <div class="hideBar">
+                <ul class="scroll">
+                    <li>
+                        <span class="num">01</span>
+                        <span class="room">药剂实验室（一）</span>
+                        <a href="labManageDetails.html" class="detail">详情</a>
+                    </li>
+                    <li>
+                        <span class="num">02</span>
+                        <span class="room">药剂实验室（二）</span>
+                        <a href="labManageDetails.html" class="detail">详情</a>
+                    </li>
+                    <li>
+                        <span class="num">03</span>
+                        <span class="room">药剂实验室（一）</span>
+                        <a href="labManageDetails.html" class="detail">详情</a>
+                    </li>
+                    <li>
+                        <span class="num">04</span>
+                        <span class="room">药剂实验室（二）</span>
+                        <a href="labManageDetails.html" class="detail">详情</a>
+                    </li>
+                    <li>
+                        <span class="num">05</span>
+                        <span class="room">药剂实验室（一）</span>
+                        <a href="labManageDetails.html" class="detail">详情</a>
+                    </li>
+                    <li>
+                        <span class="num">06</span>
+                        <span class="room">药剂实验室（二）</span>
+                        <a href="labManageDetails.html" class="detail">详情</a>
+                    </li>
+                    <li>
+                        <span class="num">07</span>
+                        <span class="room">药剂实验室（一）</span>
+                        <a href="labManageDetails.html" class="detail">详情</a>
+                    </li>
+                    <li>
+                        <span class="num">08</span>
+                        <span class="room">药剂实验室（二）</span>
+                        <a href="labManageDetails.html" class="detail">详情</a>
+                    </li>
+                    <li>
+                        <span class="num">09</span>
+                        <span class="room">药剂实验室（一）</span>
+                        <a href="labManageDetails.html" class="detail">详情</a>
+                    </li>
+                    <li>
+                        <span class="num">10</span>
+                        <span class="room">药剂实验室（二）</span>
+                        <a href="labManageDetails.html" class="detail">详情</a>
+                    </li>
+                    <li>
+                        <span class="num">11</span>
+                        <span class="room">药剂实验室（一）</span>
+                        <a href="labManageDetails.html" class="detail">详情</a>
+                    </li>
+                    <li>
+                        <span class="num">12</span>
+                        <span class="room">药剂实验室（二）</span>
+                        <a href="labManageDetails.html" class="detail">详情</a>
+                    </li>
+                    <li>
+                        <span class="num">13</span>
+                        <span class="room">药剂实验室（一）</span>
+                        <a href="labManageDetails.html" class="detail">详情</a>
+                    </li>
+                    <li>
+                        <span class="num">14</span>
+                        <span class="room">药剂实验室（二）</span>
+                        <a href="labManageDetails.html" class="detail">详情</a>
+                    </li>
+                    <li>
+                        <span class="num">15</span>
+                        <span class="room">药剂实验室（一）</span>
+                        <a href="labManageDetails.html" class="detail">详情</a>
+                    </li>
+                    <li>
+                        <span class="num">16</span>
+                        <span class="room">药剂实验室（二）</span>
+                        <a href="labManageDetails.html" class="detail">详情</a>
+                    </li>
+                    <li>
+                        <span class="num">17</span>
+                        <span class="room">药剂实验室（一）</span>
+                        <a href="labManageDetails.html" class="detail">详情</a>
+                    </li>
+                    <li>
+                        <span class="num">18</span>
+                        <span class="room">药剂实验室（二）</span>
+                        <a href="labManageDetails.html" class="detail">详情</a>
+                    </li>
+                    <li>
+                        <span class="num">19</span>
+                        <span class="room">药剂实验室（一）</span>
+                        <a href="labManageDetails.html" class="detail">详情</a>
+                    </li>
+                    <li>
+                        <span class="num">20</span>
+                        <span class="room">药剂实验室（二）</span>
+                        <a href="labManageDetails.html" class="detail">详情</a>
+                    </li>
+                    <li>
+                        <span class="num">21</span>
+                        <span class="room">药剂实验室（一）</span>
+                        <a href="labManageDetails.html" class="detail">详情</a>
+                    </li>
+                    <li>
+                        <span class="num">22</span>
+                        <span class="room">药剂实验室（二）</span>
+                        <a href="labManageDetails.html" class="detail">详情</a>
+                    </li>
+                    <li>
+                        <span class="num">23</span>
+                        <span class="room">药剂实验室（一）</span>
+                        <a href="labManageDetails.html" class="detail">详情</a>
+                    </li>
+                    <li>
+                        <span class="num">24</span>
+                        <span class="room">药剂实验室（二）</span>
+                        <a href="labManageDetails.html" class="detail">详情</a>
+                    </li>
+                    <li>
+                        <span class="num">25</span>
+                        <span class="room">药剂实验室（一）</span>
+                        <a href="labManageDetails.html" class="detail">详情</a>
+                    </li>
+                    <li>
+                        <span class="num">26</span>
+                        <span class="room">药剂实验室（二）</span>
+                        <a href="labManageDetails.html" class="detail">详情</a>
+                    </li>
+                    <li>
+                        <span class="num">27</span>
+                        <span class="room">药剂实验室（一）</span>
+                        <a href="labManageDetails.html" class="detail">详情</a>
+                    </li>
+                    <li>
+                        <span class="num">28</span>
+                        <span class="room">药剂实验室（二）</span>
+                        <a href="labManageDetails.html" class="detail">详情</a>
+                    </li>
+                    <li>
+                        <span class="num">29</span>
+                        <span class="room">药剂实验室（一）</span>
+                        <a href="labManageDetails.html" class="detail">详情</a>
+                    </li>
+                    <li>
+                        <span class="num">30</span>
+                        <span class="room">药剂实验室（二）</span>
+                        <a href="labManageDetails.html" class="detail">详情</a>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    </div>
+</body>
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">基本信息</h4>
+            </div>
+            <div class="modal-body">
+                <div class="basic-info form-horizontal">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-4 form-group ">
+                            <label class="col-xs-12 col-sm-12 col-md-12 col-lg-12 control-label">实验室名称</label>
+                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                <input class="form-control" type="text" name="labName" id="labName">
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-4 form-group ">
+                            <label class="col-xs-12 col-sm-12 col-md-12 col-lg-12 control-label">教室编号</label>
+                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                <input class="form-control" type="number" name="labNumber" id="labNumber">
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-4 form-group ">
+                            <label class="col-xs-12 col-sm-12 col-md-12 col-lg-12 control-label">教室负责人</label>
+                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                <input class="form-control" type="text" name="lableader" id="lableader">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-4 form-group ">
+                            <label class="col-xs-12 col-sm-12 col-md-12 col-lg-12 control-label">实验室开放时间</label>
+                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                <input class="form-control" type="number" name="openTime" id="openTime">
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-4 form-group ">
+                            <label class="col-xs-12 col-sm-12 col-md-12 col-lg-12 control-label">教室编号</label>
+                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                <input class="form-control" type="number" name="labNumber" id="labNumber">
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-4 form-group ">
+                            <label class="col-xs-12 col-sm-12 col-md-12 col-lg-12 control-label">教室负责人</label>
+                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                <input class="form-control" type="text" name="lableader" id="lableader">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 form-group">
+                            <label class="col-xs-12 col-sm-12 control-label">备注</label>
+                            <div class="col-xs-12 col-sm-12">
+                                <textarea class="form-control" name="remark" id="remark" rows="5" placeholder="项目备注信息">哈哈哈哈哈哈哈h</textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="delete pull-left">删除</button>
+                <button type="button" class="save pull-right">保存</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="goon" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+              <p>该页面尚未开放！</p>
+              <img src="img/true.png" alt="">
+            </div>
+        </div>
+    </div>
+</div>
+</html>

@@ -1,0 +1,254 @@
+
+/* body{
+    margin:40px 10px;
+    padding:0;
+    background:#ffddff;
+    font-family: "Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
+    font-size: 14px;
+} */
+#calendar{
+    width:900px;
+    margin:0 auto;
+}
+.taxt{
+    width:440px;
+}
+.time{
+    width:100px;
+}
+.sear{
+    width:85px;
+}
+.select{
+    width:150px;
+}
+.textarea{
+    width:300px;
+    vertical-align: middle;
+
+}
+.check{
+    padding:8px;
+}
+.slidertext{
+    padding-top:40px;
+}
+.timepicki{
+    position:relative;
+    z-index: 999;
+}
+#edit{
+    position:relative;
+    width:300px;
+}
+#edittitle{
+    padding-bottom:10px;
+    font-weight: bold;
+    font-size: 18px;
+}
+/* #edittype{
+    position:absolute;
+    top:5px;
+    right:5px;
+    width:80px;
+} */
+
+
+
+
+.ui-widget.ui-widget-content {
+    border: 1px solid #aed0ea;
+}
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default, .ui-button, html .ui-button.ui-state-disabled:hover, html .ui-button.ui-state-disabled:active {
+    border: 1px solid #aed0ea;
+    background: #d7ebf9 url(images/ui-bg_glass_80_d7ebf9_1x400.png) 50% 50% repeat-x;
+    font-weight: bold;
+    color: #2779aa;
+}
+.ui-widget-header {
+    border: 1px solid #aed0ea;
+    background: #deedf7 url(images/ui-bg_highlight-soft_100_deedf7_1x100.png) 50% 50% repeat-x;
+    
+    color: #222;
+    font-weight: bold;
+} 
+#amount{
+    background-color: #fff;
+    border: 1px solid #ccc;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
+    -moz-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
+    -webkit-transition: border linear .2s,box-shadow linear .2s;
+    -moz-transition: border linear .2s,box-shadow linear .2s;
+    -o-transition: border linear .2s,box-shadow linear .2s;
+    transition: border linear .2s,box-shadow linear .2s;
+}
+/* 复选框 */
+/* .checkbox input[type="checkbox"] {
+    width: 12px;
+    height: 12px;
+    border: 1px solid #b6b6b6;
+    margin-right: 3px;
+    margin-left: -18px;
+    border-radius: 2px;
+} */
+
+.fc-license-message{
+    display: none;
+}
+
+
+
+textarea, input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"], .uneditable-input {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
+    -moz-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
+    -webkit-transition: border linear .2s,box-shadow linear .2s;
+    -moz-transition: border linear .2s,box-shadow linear .2s;
+    -o-transition: border linear .2s,box-shadow linear .2s;
+    transition: border linear .2s,box-shadow linear .2s;
+}
+
+.mm-title{
+    display: inline-block;
+    width: 300px;
+}
+
+.form-inline .checkbox {
+    padding-left: 0;
+    margin-bottom: 0;
+    vertical-align: middle;
+}
+
+
+
+
+
+
+
+/* 时间控件外观 */
+.ui-timepicker-div .ui-widget-header { margin-bottom: 8px; }
+.ui-timepicker-div dl { text-align: left; }
+.ui-timepicker-div dl dt { height: 25px; margin-bottom: -25px; }
+.ui-timepicker-div dl dd { margin: 0 10px 10px 65px; }
+.ui-timepicker-div td { font-size: 90%; }
+.ui-tpicker-grid-label { background: none; border: none; margin: 0; padding: 0; }
+.ui_tpicker_hour_label,.ui_tpicker_minute_label,.ui_tpicker_second_label,
+.ui_tpicker_millisec_label,.ui_tpicker_time_label{padding-left:20px}
+
+
+
+/* select2 input宽度 */
+.select2-container {
+    min-width: 70%;
+    max-width: 300px;
+}
+
+/* 实验室开放时间select add icon */
+/*
+.add-wrapper{
+    position: relative;
+}
+ .add{
+    position: absolute;
+    top: 6px;
+    right: -12px;
+    cursor: pointer;
+} */
+
+/* .add{
+    color: #c0c0c0;
+    font-size: 13px;
+    margin-left: 8px;
+    cursor: pointer;
+} */
+
+
+/* .time-tabresp{
+    width: 78.5%;
+    float: right;
+} */
+.time-table{
+    border: 1px solid #ddd;
+}
+.time-tr{
+    border-top: 1px solid #ddd;
+}
+.table-responsive .time-table > thead > tr > th{
+    border-bottom: none;
+}     
+
+.edit,.del{
+    color: #b3b3b3;
+    cursor: pointer;
+}                    
+.edit:hover{
+    color: #608bdb;
+}
+.del:hover{
+    color: red;
+}
+
+.refresh{
+    text-align: right;
+    padding: 15px;
+}
+.refresh button{
+    padding: 8px 30px 6px;
+    color: #fff;
+    background: #608bdb;
+    outline: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+
+#m-eventTitle{
+    width: 300px;
+    display: inline-block;
+}
+
+input[type=radio]{
+    -webkit-appearance: radio;
+}
+#isallday{
+    -webkit-appearance: checkbox;
+}
+
+
+.timepicki{
+    position:relative;
+    z-index: 999;
+}
+
+.mleft{
+    font-size:14px;
+    font-weight: 700;
+    padding: 0;
+}
+.mright{
+    font-size: 12px;
+    margin: 10px 0;
+    padding: 0;
+}
+#editcontent,#edittype, #edittime,#editperson{
+    width: 300px;
+    padding: 10px;
+}
+
+.ui-dialog-close{
+    display: none;
+}
+
+@media(max-width:768px){
+    .table-responsive{
+        padding: 0;
+        border: none;
+    }
+    .remark-box{
+        padding: 0;
+    }
+}

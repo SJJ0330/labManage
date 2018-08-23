@@ -1,0 +1,124 @@
+/* 右侧数据 */
+#bar_1,
+#bar_2 {
+  padding: 3%;
+  background: #ffffff;
+}
+#bar_1 {
+  width: 100%;
+  height: 35%;
+}
+#bar_2 {
+  width: 100%;
+  height: 60%;
+  margin-top: 15px;
+}
+.data {
+  width: 88%;
+  height: 100%;
+  background: #edf2fb;
+  padding: 72px 20px 0;
+  overflow: hidden;
+}
+@media (max-width: 914px) {
+  .data {
+    width: 94%;
+  }
+}
+.xs-data {
+  width: 100%;
+  background: #edf2fb;
+  padding: 72px 20px 20px;
+}
+.chart-wrapper {
+  width: 48%;
+  height: 100%;
+  float: left;
+}
+.condition {
+  width: 50%;
+  height: 100%;
+  position: relative;
+  right: 0px;
+  background: #ffffff;
+  float: right;
+}
+.used {
+  position: absolute;
+  top: -18px;
+}
+.used span {
+  color: #676767;
+}
+.square {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  background: #f4d336;
+}
+.condition-title {
+  padding: 10px 25px;
+  font-weight: 600;
+  color: #759ae0;
+}
+.scroll {
+  width: 104%;
+  height: 98%;
+  overflow: scroll;
+  padding: 0 0 40px 0;
+  color: #4d4d4d;
+}
+.scroll li {
+  padding: 10px 0;
+  border-left: 10px solid transparent;
+}
+.scroll li:nth-child(odd) {
+  background: #f4f9fd;
+}
+.scroll .selected {
+  border-left: 10px solid #f4d336;
+}
+.scroll::-webkit-scrollbar {
+  display: none;
+}
+.num,
+.room,
+.use {
+  display: inline-block;
+}
+.num {
+  width: 12%;
+  margin-right: 20px;
+  text-align: center;
+  color: #676767;
+}
+.room {
+  width: 60%;
+}
+.use {
+  width: 15%;
+  text-align: right;
+}
+@media (max-width: 767px) {
+  .data {
+    width: 94%;
+  }
+  .chart-wrapper {
+    width: 100%;
+    float: none;
+  }
+  #bar_1,
+  #bar_2 {
+    display: flex;
+    justify-content: center;
+  }
+  .condition {
+    width: 100%;
+    height: 100%;
+    float: none;
+    margin-top: 40px;
+  }
+  .scroll {
+    width: 100%;
+  }
+}

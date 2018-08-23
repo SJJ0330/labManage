@@ -1,0 +1,193 @@
+/* 实验室列表 */
+
+@gray: #808080;
+@blue: #366dd2;
+@yellow: #f4d336;
+@red: #d32b2a;
+
+.logo-wrapper {
+  padding: 0px 20px;
+  overflow: hidden;
+}
+.data {
+    // width: 88%;
+    width: 103%;
+    // height: 100%;
+    height: 102%;
+    // background: #e9f1fe;
+    background: lighten(@blue, 44%);
+    // padding: 72px 20px 0;
+    padding: 72px 30px 0 20px;
+    overflow: scroll;
+     
+}
+
+// @media(max-width: 914px){
+//   .data {
+//     width: 102%;
+//   }
+// }
+
+.lab-list{
+    // height: 105%;
+    // overflow: scroll;
+    //  
+    padding-top: 20px;
+    color: darken(@gray, 10%);
+    background: lighten(@gray, 100%);
+    // .lab-list-title{
+    //   font-weight: 600;
+    //   color: lighten(@blue, 10%);
+    //   padding: 10px 20px;
+    // }
+  
+}
+// @media(min-width:768px){
+//   .lab-list{
+//     height: 105%;
+//   }
+// }
+  .nav-tabs {
+    // margin-top: 20px;
+    padding-left: 20px;
+    // font-weight: 600;
+    border-bottom: 1px solid lighten(@gray, 45%);
+    
+    & > li.active {
+      & > a {
+          color: lighten(@blue, 10%);
+          border: 1px solid lighten(@gray, 45%);
+          border-bottom-color: transparent;
+      }
+      & > a {
+        &:focus {
+          color: lighten(@blue, 10%);
+          border: 1px solid lighten(@gray, 45%);
+          border-bottom-color: transparent;
+        }
+      }
+      & > a {
+        &:hover {
+          color: lighten(@blue, 10%);
+          border: 1px solid lighten(@gray, 45%);
+          border-bottom-color: transparent;
+        }
+      }
+    }
+  }
+  .nav {
+    & > li {
+      cursor: pointer;
+      & > a {
+        padding: 6px 15px 2px 15px;
+        color: lighten(@gray, 20%);
+      }
+    }
+  }
+
+/* 新闻 */
+.news-title {
+  padding: 20px;
+  color: lighten(@gray, 20%);
+  .iconfont {
+    color: lighten(@gray, 25%);
+    font-size: 13px;
+    margin-left: 8px;
+    cursor: pointer;
+  }
+}
+
+
+/* 公告 */
+.notice-title {
+  padding: 20px 20px 10px;
+  color: lighten(@gray, 20%);
+  .iconfont {
+    color: lighten(@gray, 25%);
+    font-size: 13px;
+    margin-left: 8px;
+    cursor: pointer;
+  }
+}
+
+
+.news{
+  padding:0 0 20px 0;
+
+}
+
+.news-content{
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;      
+}
+.news-details{
+  text-align: center;
+  .blue{
+    &:hover{
+      color: @blue;
+    }
+  }
+  .red{
+    &:hover{
+      color: @red;
+    }
+  }
+}
+
+
+
+
+// #profile{
+//   height: 550px;
+// }
+
+.row{
+  margin-left: 0;
+  margin-right: 0;
+}
+ 
+  @media(max-width: 767px){
+    .data {
+      width: 100%;
+      // width: 102%;
+      height: 102%;
+      padding: 70px 20px 20px;
+    }
+    .news-num{
+      text-align: left;
+      padding: 0;
+      text-indent: 6px;
+    }
+    .lab-list {
+      .lab-list-title{
+        padding: 15px;
+      }
+ 
+    }
+    .form-horizontal {
+      .form-group {
+        margin-left: 0;
+        margin-right: 0;
+        // padding: 0 20px;
+      }
+      .control-label {
+        text-align: left;
+        // padding-left: 5px;
+      }
+    }   
+    .row-height{
+      margin-bottom: 10px;
+    }
+
+  }
+
+
+.form-control {
+  font-size: 12px;
+  box-shadow: none;
+  &:focus {
+    border-color: lighten(@gray, 40%);
+    box-shadow: none;
+  }
+}

@@ -1,0 +1,117 @@
+/* 实验室列表 */
+
+@gray: #808080;
+@white: lighten(@gray, 100%);
+@blue: #366dd2;
+@yellow: #f4d336;
+@b-gray: #ebebeb;
+
+.data {
+    width: 88%;
+    height: 100%;
+    // background: #e9f1fe;
+    background: lighten(@blue, 44%);
+    padding: 72px 20px 0;
+    overflow: hidden;
+}
+
+@media(max-width: 914px){
+  .data {
+    width: 94%;
+    // overflow: scroll;
+  }
+}
+
+.lab-list{
+    height: 100%;
+    color: darken(@gray, 10%);
+    background: lighten(@gray, 100%);
+    .lab-list-title{
+      font-weight: 600;
+      color: lighten(@blue, 15%);
+      padding: 10px 25px;
+      .iconfont {
+        color: lighten(@gray, 25%);
+        font-size: 13px;
+        margin-left: 8px;
+        cursor: pointer;
+      }
+    }
+    .scroll{
+        width: 104%;
+        height: 98%;
+        overflow: scroll;
+         
+        padding: 0 0 30px 0;
+        color: darken(@gray, 10%);
+        li{
+            padding: 10px 0;
+            border-left: 10px solid transparent;
+            &:nth-child(odd){
+              background: mix(@blue, #f6fafd, .8%);
+            }
+            &:nth-child(even){
+              background: @white;
+            }
+        }
+        .num {
+            display: inline-block;
+            width: 7%;
+            text-align: center;
+            color: darken(@gray, 20%);
+        }
+        .room {
+            display: inline-block;
+            width: 82%;
+        }
+        .detail {
+            display: inline-block;
+            cursor: pointer;
+            color: darken(@gray, 10%);
+            &:hover {
+                color: @blue;
+            }
+        }
+
+    }
+    
+  }
+
+  
+  @media(max-width: 767px){
+    .data {
+      width: 100%;
+      padding: 70px 20px 20px;
+    }
+    .scroll{
+      height: 92%;
+    }
+    .lab-list {
+      // .lab-list-title{
+      //   padding: 10px;
+      // }
+      .scroll {
+        .num {
+            width: 10%;
+        }
+        .room {
+            width: 74%;
+          }
+      }
+      
+    }
+  }
+
+
+.form-control {
+  font-size: 12px;
+  box-shadow: none;
+  border: 1px solid @b-gray;
+  &:focus {
+    border-color: lighten(@gray, 40%);
+    box-shadow: none;
+  }
+}
+
+
+

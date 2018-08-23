@@ -1,0 +1,88 @@
+/* 实验室列表 */
+.data {
+  width: 88%;
+  height: 100%;
+  background: #edf2fb;
+  padding: 72px 20px 0;
+  overflow: hidden;
+}
+@media (max-width: 914px) {
+  .data {
+    width: 94%;
+  }
+}
+.lab-list {
+  height: 100%;
+  color: #676767;
+  background: #ffffff;
+}
+.lab-list .lab-list-title {
+  font-weight: 600;
+  color: #759ae0;
+  padding: 10px 25px;
+}
+.lab-list .lab-list-title .iconfont {
+  color: #c0c0c0;
+  font-size: 13px;
+  margin-left: 8px;
+  cursor: pointer;
+}
+.lab-list .scroll {
+  width: 104%;
+  height: 98%;
+  overflow: scroll;
+  padding: 0 0 30px 0;
+  color: #676767;
+}
+.lab-list .scroll li {
+  padding: 10px 0;
+  border-left: 10px solid transparent;
+}
+.lab-list .scroll li:nth-child(odd) {
+  background: #f4f9fd;
+}
+.lab-list .scroll li:nth-child(even) {
+  background: #ffffff;
+}
+.lab-list .scroll .num {
+  display: inline-block;
+  width: 7%;
+  text-align: center;
+  color: #4d4d4d;
+}
+.lab-list .scroll .room {
+  display: inline-block;
+  width: 82%;
+}
+.lab-list .scroll .detail {
+  display: inline-block;
+  cursor: pointer;
+  color: #676767;
+}
+.lab-list .scroll .detail:hover {
+  color: #366dd2;
+}
+@media (max-width: 767px) {
+  .data {
+    width: 100%;
+    padding: 70px 20px 20px;
+  }
+  .scroll {
+    height: 92%;
+  }
+  .lab-list .scroll .num {
+    width: 10%;
+  }
+  .lab-list .scroll .room {
+    width: 74%;
+  }
+}
+.form-control {
+  font-size: 12px;
+  box-shadow: none;
+  border: 1px solid #ebebeb;
+}
+.form-control:focus {
+  border-color: #e6e6e6;
+  box-shadow: none;
+}

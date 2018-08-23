@@ -1,0 +1,141 @@
+html,
+body {
+  height: 100%;
+  font-size: 12px;
+}
+.main {
+  height: 100%;
+  padding-top: 100px;
+  background-image: url(../img/login.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.header {
+  text-align: center;
+}
+.login {
+  margin: 50px auto;
+  background: #fff;
+  width: 500px;
+  height: 280px;
+  padding: 40px 30px;
+}
+form {
+  overflow: hidden;
+}
+.l_input {
+  width: 100%;
+  color: #366dd2;
+  border-bottom: 1px solid #608bdb;
+  margin-top: 10px;
+  outline: none;
+}
+input {
+  border-width: 0;
+}
+.name,
+.psw {
+  margin-bottom: 40px;
+}
+.forget {
+  float: left;
+  cursor: pointer;
+}
+.login-btn {
+  display: block;
+  float: right;
+  font-size: 12px;
+  padding: 3px 30px 1px;
+  color: #fff;
+  background: #366dd2;
+  cursor: pointer;
+}
+.login-btn:hover {
+  background: #295bb6;
+}
+a,
+a:link,
+a:visited,
+a:hover,
+a:active {
+  text-decoration: none;
+  color: #fff;
+}
+.forget:hover {
+  color: #295bb6;
+}
+.footer {
+  position: absolute;
+  bottom: 10px;
+  right: 30px;
+}
+.footer img {
+  width: 150px;
+}
+.b-color {
+  color: #9eb9e9;
+}
+.deep-blue {
+  color: #608bdb;
+}
+/* 忘记密码 */
+.modal-content {
+  border-radius: 0;
+}
+@media (max-width: 768px) {
+  .main {
+    padding-top: 50px;
+  }
+  .header {
+    margin-top: 50px;
+  }
+  .header img {
+    width: 200px;
+  }
+  .login {
+    width: 85%;
+  }
+  .footer {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    margin-left: -60px;
+  }
+  .footer img {
+    width: 120px;
+  }
+}
+.form-horizontal .form-group {
+  margin-left: 0;
+  margin-right: 0;
+}
+.form-horizontal .control-label {
+  text-align: left;
+}
+.form-control {
+  font-size: 12px;
+  box-shadow: none;
+  border: 1px solid #ebebeb;
+}
+.form-control:focus {
+  border-color: #e6e6e6;
+  box-shadow: none;
+}
+.save,
+.send {
+  outline: none;
+  border: none;
+  background-color: #366dd2;
+  color: #ffffff;
+}
+.save {
+  padding: 4px 24px 2px;
+}
+.save:hover,
+.send:hover {
+  background-color: #295bb6;
+}
+.send {
+  margin-top: 5px;
+  padding: 4px 20px 2px;
+}
