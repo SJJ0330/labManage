@@ -856,76 +856,76 @@
                             // $("#calendar").fullCalendar("removeEvents", event.id)
                         },
                         button: [
-                        {
-                            value: "确定是否通过",
-                            callback: function () {
-                                // 将状态值放在data中传给mydetail.php,
-                                // mydetail.php根据不同的状态值给事件显示不同的颜色和表示当前状态的文本
-                                var passornot = $("input[type=radio]:checked").val();
-                                // console.log("passornot: " + passornot);
+                        // {
+                        //     value: "确定是否通过",
+                        //     callback: function () {
+                        //         // 将状态值放在data中传给mydetail.php,
+                        //         // mydetail.php根据不同的状态值给事件显示不同的颜色和表示当前状态的文本
+                        //         var passornot = $("input[type=radio]:checked").val();
+                        //         // console.log("passornot: " + passornot);
 
-                                var content = $("#content").val();
-                                    var startdate = $("#startdate").val();
-                                    var starttime = $("#starttime").val().split(" ").join("");
-                                    var enddate = $("#stopdate").val();
-                                    var endtime = $("#endtime").val().split(" ").join("");
-                                    var allDay = $("#isallday").val();
-                                    var personsearch = $("#personSearch").val();
-                                    var type = $(".select").find("option:selected").text();
+                        //         var content = $("#content").val();
+                        //             var startdate = $("#startdate").val();
+                        //             var starttime = $("#starttime").val().split(" ").join("");
+                        //             var enddate = $("#stopdate").val();
+                        //             var endtime = $("#endtime").val().split(" ").join("");
+                        //             var allDay = $("#isallday").val();
+                        //             var personsearch = $("#personSearch").val();
+                        //             var type = $(".select").find("option:selected").text();
                                     
-                                    // 将事务标题、事务类型和参与者一起放在data数据的title中，传给mydetail.php,
-                                    // "*"是分隔字符串
-                                    var contentTypePerson = content + "*" + type + "*" + personsearch;
-                                    // alert("contentTypePerson: " + contentTypePerson);
+                        //             // 将事务标题、事务类型和参与者一起放在data数据的title中，传给mydetail.php,
+                        //             // "*"是分隔字符串
+                        //             var contentTypePerson = content + "*" + type + "*" + personsearch;
+                        //             // alert("contentTypePerson: " + contentTypePerson);
 
-                                    // 当选择”全天“时，时间戳加上86400000，即一天的毫秒数，向后延一天，这样选择的日期超过一天时，日历上才不会少显示一天
-                                    // 当不选择”全天“时，还是用原来的时间戳
-                                    if ($("#isallday").prop("checked")) {
-                                        // 日期转为时间戳
-                                        var m_enddate = new Date(enddate);
-                                        // var newenddate = m_enddate.getTime();
-                                        var newenddate = m_enddate.getTime() + 86400000;
+                        //             // 当选择”全天“时，时间戳加上86400000，即一天的毫秒数，向后延一天，这样选择的日期超过一天时，日历上才不会少显示一天
+                        //             // 当不选择”全天“时，还是用原来的时间戳
+                        //             if ($("#isallday").prop("checked")) {
+                        //                 // 日期转为时间戳
+                        //                 var m_enddate = new Date(enddate);
+                        //                 // var newenddate = m_enddate.getTime();
+                        //                 var newenddate = m_enddate.getTime() + 86400000;
 
-                                        // 时间戳转为日期
-                                        function formatUnixtimestamp(unixtimestamp) {
-                                            var unixtimestamp = new Date(unixtimestamp);//时间戳为10位需*1000，时间戳为13位的话不需乘1000
-                                            var year = 1900 + unixtimestamp.getYear();
-                                            var month = "0" + (unixtimestamp.getMonth() + 1);
-                                            var date = "0" + unixtimestamp.getDate();
-                                            // var hour = "0" + unixtimestamp.getHours();
-                                            // var minute = "0" + unixtimestamp.getMinutes();
-                                            // var second = "0" + unixtimestamp.getSeconds();
-                                            return year + "-" + month.substring(month.length - 2, month.length) + "-" + date.substring(date.length - 2, date.length)
-                                            // + " " + hour.substring(hour.length - 2, hour.length) + ":"
-                                            // + minute.substring(minute.length - 2, minute.length) + ":"
-                                            // + second.substring(second.length - 2, second.length);
-                                        }
-                                        var kk = formatUnixtimestamp(newenddate);
-                                    } else {
-                                        var kk = enddate;
-                                    }
+                        //                 // 时间戳转为日期
+                        //                 function formatUnixtimestamp(unixtimestamp) {
+                        //                     var unixtimestamp = new Date(unixtimestamp);//时间戳为10位需*1000，时间戳为13位的话不需乘1000
+                        //                     var year = 1900 + unixtimestamp.getYear();
+                        //                     var month = "0" + (unixtimestamp.getMonth() + 1);
+                        //                     var date = "0" + unixtimestamp.getDate();
+                        //                     // var hour = "0" + unixtimestamp.getHours();
+                        //                     // var minute = "0" + unixtimestamp.getMinutes();
+                        //                     // var second = "0" + unixtimestamp.getSeconds();
+                        //                     return year + "-" + month.substring(month.length - 2, month.length) + "-" + date.substring(date.length - 2, date.length)
+                        //                     // + " " + hour.substring(hour.length - 2, hour.length) + ":"
+                        //                     // + minute.substring(minute.length - 2, minute.length) + ":"
+                        //                     // + second.substring(second.length - 2, second.length);
+                        //                 }
+                        //                 var kk = formatUnixtimestamp(newenddate);
+                        //             } else {
+                        //                 var kk = enddate;
+                        //             }
                             
 
-                                $.ajax({
-                                    url: 'http://localhost:8888/labmanagement/mydetail.php',
-                                    // data: {passornot: passornot },
-                                    data: {title:contentTypePerson,sdate: startdate, stime: starttime, edate: kk , etime: endtime, allDay: allDay,passornot: passornot},
-                                    type: 'POST',
-                                    dataType: 'json',
-                                    success: function (data) {
-                                        $("#calendar").fullCalendar("renderEvent", data, true);
-                                        // alert("startdate: " + startdate + "\n"
-                                        // + "enddate: " + enddate + "\n"
-                                        // + "allDay: " + allDay);
-                                        // alert("hhhhhaaahah" + "\n" + "color: " + event.color);
-                                    },
-                                    error: function () {
-                                        alert("Failed");
-                                    }
+                        //         $.ajax({
+                        //             url: 'http://localhost:8888/labmanagement/mydetail.php',
+                        //             // data: {passornot: passornot },
+                        //             data: {title:contentTypePerson,sdate: startdate, stime: starttime, edate: kk , etime: endtime, allDay: allDay,passornot: passornot},
+                        //             type: 'POST',
+                        //             dataType: 'json',
+                        //             success: function (data) {
+                        //                 $("#calendar").fullCalendar("renderEvent", data, true);
+                        //                 // alert("startdate: " + startdate + "\n"
+                        //                 // + "enddate: " + enddate + "\n"
+                        //                 // + "allDay: " + allDay);
+                        //                 // alert("hhhhhaaahah" + "\n" + "color: " + event.color);
+                        //             },
+                        //             error: function () {
+                        //                 alert("Failed");
+                        //             }
 
-                                });
-                            }
-                        },
+                        //         });
+                        //     }
+                        // },
                         {
                             value: "取消",
                             callback: function () {},
@@ -1523,12 +1523,12 @@
                                     </p>
                                     <p class="wrongInfo" style="margin-left:70px;color:red;">该内容不能为空！！！</p>
                                     <!-- <p></p> -->
-                                    <div id="manager" style="display: none;">
+                                    <!-- <div id="manager" style="display: none;">
                                         <label>管理员决策：
                                             <input type="radio" name="passOrNot" value="pass"> 通过
                                             <input type="radio" name="passOrNot" value="failed"> 失败
                                         </label>
-                                    </div>
+                                    </div> -->
                                     
                                 </form>
                             </div>
@@ -1560,12 +1560,12 @@
                                 <div class="mright">
                                     <textarea id="editperson" rows="4" readonly="readonly"></textarea>
                                 </div>
-                                <div id="manager">
+                                <!-- <div id="manager">
                                     <label>管理员决策：
                                         <input type="radio" name="passOrNot" value="pass"> 通过
                                         <input type="radio" name="passOrNot" value="failed"> 失败
                                     </label>
-                                </div>
+                                </div> -->
                             </div>
 
                             <!-- 查询按钮 弹出框 -->
