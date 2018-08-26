@@ -9,7 +9,7 @@
    
    数据大屏页面主要用于展示实验室的相关数据，包括每月实验室的预约次数、实验器材的预约次数以及当前实验室的使用状态。这里使用了echarts绘制图表，使数据更直观地显示给用户。
    
-   ![](https://github.com/SJJ0330/labManage/readmeImg/1.PNG）
+   ![](https://sjj0330.github.io/labManage/readmeImg/1.PNG）
    
    2.实验室管理
    
